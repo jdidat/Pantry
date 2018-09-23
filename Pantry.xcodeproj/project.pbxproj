@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				83DD62172130D70C00C92CBE /* AppDelegate.swift */,
-				83DD62192130D70C00C92CBE /* ViewController.swift */,
+				A579F0EF21572D8300AD06C0 /* Controllers */,
 				83DD621B2130D70C00C92CBE /* Main.storyboard */,
 				83DD621E2130D70E00C92CBE /* Assets.xcassets */,
 				83DD62202130D70E00C92CBE /* LaunchScreen.storyboard */,
@@ -153,6 +153,14 @@
 				83DD62392130D70E00C92CBE /* Info.plist */,
 			);
 			path = PantryUITests;
+			sourceTree = "<group>";
+		};
+		A579F0EF21572D8300AD06C0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				83DD62192130D70C00C92CBE /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		C8AC664EA5DB539466A7F945 /* Pods */ = {
@@ -344,13 +352,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Pantry/Pods-Pantry-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
