@@ -69,20 +69,11 @@
                         <outlet property="email_address" destination="9op-rR-1Ry" id="Ohm-oK-VsQ"/>
                         <outlet property="password" destination="lS0-K0-UAG" id="xs4-H2-y6W"/>
                         <segue destination="EMB-M2-V3m" kind="show" identifier="homeSegue" id="Slc-lI-uKn"/>
-                        <segue destination="qu8-sX-eLa" kind="show" id="ZB9-ww-hA8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-266.39999999999998" y="-1.3493253373313345"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="Jof-9y-bnO">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="qu8-sX-eLa" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="87Z-Tz-wac" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="370" y="-140"/>
         </scene>
         <!--Home-->
         <scene sceneID="9nX-dL-4gm">
