@@ -68,20 +68,50 @@
                     <connections>
                         <outlet property="email_address" destination="9op-rR-1Ry" id="Ohm-oK-VsQ"/>
                         <outlet property="password" destination="lS0-K0-UAG" id="xs4-H2-y6W"/>
-                        <segue destination="EMB-M2-V3m" kind="show" identifier="homeSegue" id="Slc-lI-uKn"/>
+                        <segue destination="IHr-E1-9ao" kind="show" identifier="homeSegue" id="uju-4V-XBf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-266.39999999999998" y="-1.3493253373313345"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="9nX-dL-4gm">
+        <!--Tab Bar Controller-->
+        <scene sceneID="kXM-Mb-gQz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="EMB-M2-V3m" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QDe-sk-fPl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="IHr-E1-9ao" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VmO-Bc-PLx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Gbu-DI-9RB" kind="relationship" relationship="viewControllers" id="IbH-ag-ypN"/>
+                        <segue destination="ShD-2H-zcV" kind="relationship" relationship="viewControllers" id="cno-mu-gWf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ir5-P5-ocN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="119"/>
+            <point key="canvasLocation" x="540" y="0.0"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="OMg-so-rhZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="Gbu-DI-9RB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ciZ-5D-h0D"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hYy-lf-1XZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1307" y="-155"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="xr3-ch-sVe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="ShD-2H-zcV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Cki-S4-FCb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-u7-lWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1306" y="144"/>
         </scene>
     </scenes>
 </document>
