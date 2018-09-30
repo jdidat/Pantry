@@ -19,6 +19,8 @@
 		83DD62382130D70E00C92CBE /* PantryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD62372130D70E00C92CBE /* PantryUITests.swift */; };
 		8B5D9ED29ECE045CDA7DCA31 /* Pods_Pantry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4243FB0A5C7EA759FF3C72 /* Pods_Pantry.framework */; };
 		D875372E21617046000DF5F3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875372D21617046000DF5F3 /* Home.storyboard */; };
+		D87537302161737B000DF5F3 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875372F2161737B000DF5F3 /* Settings.storyboard */; };
+		D87537322161739C000DF5F3 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Discover.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		83DD62372130D70E00C92CBE /* PantryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUITests.swift; sourceTree = "<group>"; };
 		83DD62392130D70E00C92CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D875372D21617046000DF5F3 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		D875372F2161737B000DF5F3 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		D87537312161739C000DF5F3 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		E9D9EDBBA9E81A78DAA0A133 /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB2B00851D5D3ED1A10F598E /* Pods-PantryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE4243FB0A5C7EA759FF3C72 /* Pods_Pantry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pantry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,8 @@
 			children = (
 				83DD621B2130D70C00C92CBE /* Main.storyboard */,
 				D875372D21617046000DF5F3 /* Home.storyboard */,
+				D875372F2161737B000DF5F3 /* Settings.storyboard */,
+				D87537312161739C000DF5F3 /* Discover.storyboard */,
 			);
 			path = "Story Boards";
 			sourceTree = "<group>";
@@ -298,7 +304,9 @@
 				83DD62222130D70E00C92CBE /* LaunchScreen.storyboard in Resources */,
 				D875372E21617046000DF5F3 /* Home.storyboard in Resources */,
 				19A66B67214EF86400F087F9 /* GoogleService-Info.plist in Resources */,
+				D87537302161737B000DF5F3 /* Settings.storyboard in Resources */,
 				83DD621F2130D70E00C92CBE /* Assets.xcassets in Resources */,
+				D87537322161739C000DF5F3 /* Discover.storyboard in Resources */,
 				83DD621D2130D70C00C92CBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
