@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  ProfileSettingsViewController.swift
 //  Pantry
 //
 //  Created by Joseph Davey on 9/30/18.
@@ -8,26 +8,11 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
-    
-    @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var recipeNumber: UILabel!
-    @IBOutlet weak var ratingNumber: UILabel!
-    @IBOutlet weak var username: UILabel!
-    
-    @IBAction func editProfile(_ sender: Any) {
-        
-    }
-    
+class ProfileSettingsViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Make Profile Picture Circular
-        profilePicture.layer.borderWidth = 1
-        profilePicture.layer.masksToBounds = false
-        profilePicture.layer.borderColor = UIColor.black.cgColor
-        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
-        profilePicture.clipsToBounds = true
+
         // Do any additional setup after loading the view.
     }
 

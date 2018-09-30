@@ -22,6 +22,7 @@
 		D87537322161739C000DF5F3 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Discover.storyboard */; };
 		D875373421617485000DF5F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875373321617485000DF5F3 /* Profile.storyboard */; };
 		D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87537372161784E000DF5F3 /* ProfileViewController.swift */; };
+		D875373A21617EC8000DF5F3 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D875373921617EC8000DF5F3 /* ProfileSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		D87537312161739C000DF5F3 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		D875373321617485000DF5F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D87537372161784E000DF5F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D875373921617EC8000DF5F3 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		E9D9EDBBA9E81A78DAA0A133 /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB2B00851D5D3ED1A10F598E /* Pods-PantryUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PantryUITests/Pods-PantryUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE4243FB0A5C7EA759FF3C72 /* Pods_Pantry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pantry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +169,7 @@
 			children = (
 				83DD62192130D70C00C92CBE /* ViewController.swift */,
 				D87537372161784E000DF5F3 /* ProfileViewController.swift */,
+				D875373921617EC8000DF5F3 /* ProfileSettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */,
 				83DD621A2130D70C00C92CBE /* ViewController.swift in Sources */,
 				83DD62182130D70C00C92CBE /* AppDelegate.swift in Sources */,
+				D875373A21617EC8000DF5F3 /* ProfileSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

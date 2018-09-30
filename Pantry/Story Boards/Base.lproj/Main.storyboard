@@ -84,9 +84,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selected">
+                            <color key="value" red="1" green="0.19817346154539861" blue="0.35849733228307812" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="unselected">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="Gbu-DI-9RB" kind="relationship" relationship="viewControllers" id="IbH-ag-ypN"/>
-                        <segue destination="ShD-2H-zcV" kind="relationship" relationship="viewControllers" id="cno-mu-gWf"/>
+                        <segue destination="rqT-gE-BSj" kind="relationship" relationship="viewControllers" id="nFe-NU-gkZ"/>
+                        <segue destination="XG0-yT-dsv" kind="relationship" relationship="viewControllers" id="JYa-fJ-fBG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir5-P5-ocN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -97,21 +105,73 @@
         <scene sceneID="OMg-so-rhZ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Home" id="Gbu-DI-9RB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ciZ-5D-h0D"/>
+                    <navigationItem key="navigationItem" id="uu0-14-7px"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYy-lf-1XZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="-155"/>
+            <point key="canvasLocation" x="2984" y="-329.2353823088456"/>
         </scene>
         <!--Profile-->
         <scene sceneID="xr3-ch-sVe">
             <objects>
                 <viewControllerPlaceholder storyboardName="Profile" id="ShD-2H-zcV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Cki-S4-FCb"/>
+                    <navigationItem key="navigationItem" id="qmJ-tJ-Ihj"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0wa-u7-lWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1306" y="144"/>
+            <point key="canvasLocation" x="3037" y="437"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="eOv-rr-KW5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rqT-gE-BSj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Discover" image="icons8-search-more-24" selectedImage="icons8-search-more-24" id="ciZ-5D-h0D">
+                        <color key="badgeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.85969225888324874" green="0.22848757742936879" blue="0.098995619010832356" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PGy-Vd-WGl">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gbu-DI-9RB" kind="relationship" relationship="rootViewController" id="UAa-zb-qiE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dso-GZ-lmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="-329.68515742128938"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="fmx-32-C1A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XG0-yT-dsv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="icons8-user-filled-50" id="Cki-S4-FCb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Db6-Z6-hD7">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ShD-2H-zcV" kind="relationship" relationship="rootViewController" id="gf1-o4-CO1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CaS-2J-fEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="438"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-search-more-24" width="24" height="24"/>
+        <image name="icons8-user-filled-50" width="24" height="24"/>
+    </resources>
 </document>
