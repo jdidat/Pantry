@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -101,16 +101,6 @@
             </objects>
             <point key="canvasLocation" x="540" y="0.0"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="OMg-so-rhZ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="Gbu-DI-9RB" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="uu0-14-7px"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hYy-lf-1XZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2984" y="-329.2353823088456"/>
-        </scene>
         <!--Profile-->
         <scene sceneID="xr3-ch-sVe">
             <objects>
@@ -143,12 +133,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Gbu-DI-9RB" kind="relationship" relationship="rootViewController" id="UAa-zb-qiE"/>
+                        <segue destination="yeV-jD-r4n" kind="relationship" relationship="rootViewController" id="Pdg-mi-kJa"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dso-GZ-lmw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2044" y="-329.68515742128938"/>
+        </scene>
+        <!--Discover-->
+        <scene sceneID="m8I-Ng-fk6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Discover" id="yeV-jD-r4n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="55r-fK-ffY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wP9-WW-mFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3190" y="-330"/>
         </scene>
         <!--Profile-->
         <scene sceneID="fmx-32-C1A">
@@ -171,7 +171,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons8-search-more-24" width="24" height="24"/>
-        <image name="icons8-user-filled-50" width="24" height="24"/>
+        <image name="icons8-search-more-24" width="18" height="18"/>
+        <image name="icons8-user-filled-50" width="18" height="18"/>
     </resources>
 </document>

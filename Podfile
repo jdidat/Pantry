@@ -8,6 +8,8 @@ target 'Pantry' do
   # Pods for Pantry
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Alamofire', '~> 4.7'
+  pod 'AlamofireImage', '~> 3.4'
 
   target 'PantryTests' do
     inherit! :search_paths
