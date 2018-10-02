@@ -83,6 +83,7 @@
                         <viewLayoutGuide key="safeArea" id="DNR-tn-Fkl"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="Iy3-EX-U0s" id="C8b-Gc-ZXI"/>
                         <outlet property="table" destination="26l-Ja-KsA" id="9Yn-we-VnM"/>
                     </connections>
                 </viewController>

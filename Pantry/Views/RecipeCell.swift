@@ -21,8 +21,12 @@ class RecipeCell: UITableViewCell {
         didSet {
             recipeTitle.text = recipe?.title
             if let url = URL(string: (recipe?.thumbnail)!) {
+                let urlRequest = URLRequest(url: url)
+                URLCache.shared.removeCachedResponse(for: urlRequest)
                 Alamofire.request(url).responseImage { (response) in
-                    self.recipeImage.image = response.value
+                    DispatchQueue.main.async {
+                        self.recipeImage.image = response.value
+                    }
                 }
             }
             recipieIngredients.text = recipe?.ingredients
