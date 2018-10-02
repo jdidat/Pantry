@@ -147,12 +147,12 @@
 				A53C8EB22162FBD100C7792F /* API */,
 				A575EC782161BF82008BECEF /* Views */,
 				A575EC752161BF5F008BECEF /* Models */,
-				83DD62172130D70C00C92CBE /* AppDelegate.swift */,
 				D875372C2161702C000DF5F3 /* Story Boards */,
 				A579F0EF21572D8300AD06C0 /* Controllers */,
 				83DD621E2130D70E00C92CBE /* Assets.xcassets */,
 				83DD62232130D70E00C92CBE /* Info.plist */,
 				19A66B66214EF86400F087F9 /* GoogleService-Info.plist */,
+				83DD62172130D70C00C92CBE /* AppDelegate.swift */,
 			);
 			path = Pantry;
 			sourceTree = "<group>";
