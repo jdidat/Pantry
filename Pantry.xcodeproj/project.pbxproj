@@ -22,7 +22,7 @@
 		A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC792161BFE7008BECEF /* RecipeCell.swift */; };
 		A575EC812161C05A008BECEF /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7C2161C05A008BECEF /* ProfileSettingsViewController.swift */; };
 		A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7D2161C05A008BECEF /* DiscoverController.swift */; };
-		A575EC832161C05A008BECEF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7E2161C05A008BECEF /* ViewController.swift */; };
+		A575EC832161C05A008BECEF /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7E2161C05A008BECEF /* LoginController.swift */; };
 		A575EC842161C05A008BECEF /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */; };
 		D87537322161739C000DF5F3 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Discover.storyboard */; };
 		D875373421617485000DF5F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875373321617485000DF5F3 /* Profile.storyboard */; };
@@ -70,7 +70,7 @@
 		A575EC792161BFE7008BECEF /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		A575EC7C2161C05A008BECEF /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSettingsViewController.swift; path = ../../../Pantry/Pantry/Controllers/ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		A575EC7D2161C05A008BECEF /* DiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
-		A575EC7E2161C05A008BECEF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../../Pantry/Pantry/Controllers/ViewController.swift; sourceTree = "<group>"; };
+		A575EC7E2161C05A008BECEF /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = ../../../Pantry/Pantry/Controllers/LoginController.swift; sourceTree = "<group>"; };
 		A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		D87537312161739C000DF5F3 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		D875373321617485000DF5F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 				A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */,
 				A575EC7D2161C05A008BECEF /* DiscoverController.swift */,
 				A575EC7C2161C05A008BECEF /* ProfileSettingsViewController.swift */,
-				A575EC7E2161C05A008BECEF /* ViewController.swift */,
+				A575EC7E2161C05A008BECEF /* LoginController.swift */,
 				D87537372161784E000DF5F3 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
@@ -460,7 +460,7 @@
 				D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */,
 				A575EC812161C05A008BECEF /* ProfileSettingsViewController.swift in Sources */,
 				A53C8EB42162FBE300C7792F /* APIManager.swift in Sources */,
-				A575EC832161C05A008BECEF /* ViewController.swift in Sources */,
+				A575EC832161C05A008BECEF /* LoginController.swift in Sources */,
 				A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */,
 				A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */,
 				A575EC772161BF6E008BECEF /* Recipe.swift in Sources */,

@@ -41,7 +41,7 @@ class HomeController: UIViewController,  UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-        cell.recipeImage.image = nil
+        cell.recipeImage.image = UIImage(named: "default")
         cell.recipe = recipies[indexPath.row]
         return cell
     }
