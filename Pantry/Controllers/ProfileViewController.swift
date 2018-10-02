@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
@@ -21,7 +22,15 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        APIManager.shared.getCurrentUserData(completion: { (data, err) in
+            if let data = data {
+                self.username.text! = data["username"] as! String
+                self.ratingNumber.text! = String(describing: data["rating"] as! Double)
+                self.recipeNumber.text! = String(describing: data["recipeCount"] as! Int)
+            } else {
+                print(err!.localizedDescription)
+            }
+        })
         //Make Profile Picture Circular
         profilePicture.layer.borderWidth = 1
         profilePicture.layer.masksToBounds = false
@@ -35,16 +44,5 @@ class ProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

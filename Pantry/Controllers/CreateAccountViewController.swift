@@ -18,19 +18,16 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        profileImage.isUserInteractionEnabled = true
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tapGesture))
-//        profileImage.addGestureRecognizer(tapGesture)
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func createAccount(_ sender: Any) {
-        Auth.auth().createUser(withEmail: emailText.text!, password: emailText.text!, completion: { (result, error) ->
-            Void in
+        APIManager.shared.createUser(email: emailText.text!, password: passwordText.text!, username: "Test") { (error) in
             if (error == nil) {
                 self.performSegue(withIdentifier: "homeSegue", sender: self)
+            } else {
+                print(error!.localizedDescription)
             }
-        })
+        }
     }
     
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
@@ -54,18 +51,6 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

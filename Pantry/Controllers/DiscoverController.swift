@@ -14,20 +14,17 @@ class HomeController: UIViewController,  UITableViewDataSource, UITableViewDeleg
     @IBOutlet weak var table: UITableView!
     
     var searchURLBase = "http://www.recipepuppy.com/api/?q=steak"
-    
     var recipies: [Recipe] = []
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("HERERER");
         var keywords = searchBar.text
         keywords = keywords?.replacingOccurrences(of: " ", with: "+")
         
         searchURLBase = "http://www.recipepuppy.com/api/?q=\(keywords ?? "steak")"
         
-        APIManager(urlString: searchURLBase) { (searchResults: RecipeSearch) in
+        APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
             let recipies = searchResults.results
             self.recipies = recipies
-            print(self.recipies)
             DispatchQueue.main.async {
                 self.table.reloadData()
             }
@@ -53,10 +50,9 @@ class HomeController: UIViewController,  UITableViewDataSource, UITableViewDeleg
         table.dataSource = self
         searchBar.delegate = self
         navigationController?.navigationBar.topItem?.title = "Discover"
-        APIManager(urlString: searchURLBase) { (searchResults: RecipeSearch) in
+        APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
             let recipies = searchResults.results
             self.recipies = recipies
-            print(self.recipies)
             DispatchQueue.main.async {
                 self.table.reloadData()
             }
