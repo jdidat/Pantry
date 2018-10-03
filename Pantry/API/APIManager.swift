@@ -44,7 +44,7 @@ class APIManager {
     }
     
     func createUser(email: String, password: String, username: String, completion: @escaping (Error?) -> ()) {
-        if !validateUser() {return}
+        //if !validateUser() {return}
         Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
             Void in
             if (error == nil) {
@@ -68,9 +68,7 @@ class APIManager {
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
-        if !validateUser() {
-            return
-        }
+        //if !validateUser() {return}
         Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
             if err != nil {
                 completion(err)

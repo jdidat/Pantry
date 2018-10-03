@@ -75,7 +75,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="9op-rR-1Ry" customClass="ACFloatingTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9op-rR-1Ry" customClass="ACFloatingTextField">
                                 <rect key="frame" x="81" y="319" width="213" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -125,8 +125,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="email_address" destination="9op-rR-1Ry" id="Ohm-oK-VsQ"/>
-                        <outlet property="password" destination="lS0-K0-UAG" id="xs4-H2-y6W"/>
+                        <outlet property="email_address" destination="9op-rR-1Ry" id="A1h-co-CHY"/>
+                        <outlet property="password" destination="lS0-K0-UAG" id="Lsd-i7-lT0"/>
                         <segue destination="IHr-E1-9ao" kind="show" identifier="homeSegue" id="uju-4V-XBf"/>
                     </connections>
                 </viewController>

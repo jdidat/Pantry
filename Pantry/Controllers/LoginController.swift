@@ -9,11 +9,12 @@
 import UIKit
 import FirebaseAuth
 import Pastel
+import ACFloatingTextfield_Objc
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var email_address: UITextField!
-    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var email_address: ACFloatingTextField!
+    @IBOutlet weak var password: ACFloatingTextField!
     
     weak var handle: NSObjectProtocol?
     
@@ -76,7 +77,6 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.performSegue(withIdentifier: "homeSegue", sender: self)
             } else {
-                print("hello")
                 let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
