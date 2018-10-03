@@ -8,6 +8,16 @@
 
 import UIKit
 
+class Responder: NSObject {
+    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+                    UIView.animate(withDuration: 0.2) {
+                        buttonBar.frame.origin.x = (sender.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex) + 17
+                    }
+    }
+}
+let responder = Responder()
+let buttonBar = UIView()
+
 class RecipeControllerViewController: UIViewController {
     
     var currentViewController: UIViewController?
@@ -42,18 +52,10 @@ class RecipeControllerViewController: UIViewController {
     @IBOutlet weak var segmentController: UISegmentedControl!
     // The following few lines allow the current segment bar to be animated
     // and actually follow the current segment
-    class Responder: NSObject {
-        @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-//            UIView.animate(withDuration: 0.3) {
-//                self.buttonBar.frame.origin.x = (self.segmentController.frame.width / CGFloat(self.segmentController.numberOfSegments)) * CGFloat(self.segmentController.selectedSegmentIndex)
-//            }
-        }
-    }
-    let responder = Responder()
-    let buttonBar = UIView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        segmentController.addTarget(responder, action: #selector(responder.segmentedControlValueChanged(_:)), for: UIControlEvents.valueChanged)
         // Makes segmented controller REAL nice
         segmentController.backgroundColor = UIColor.clear
         segmentController.tintColor = UIColor.clear
@@ -72,14 +74,15 @@ class RecipeControllerViewController: UIViewController {
         buttonBar.leftAnchor.constraint(equalTo: segmentController.leftAnchor).isActive = true
         buttonBar.widthAnchor.constraint(equalTo: segmentController.widthAnchor, multiplier: 1 / CGFloat(segmentController.numberOfSegments)).isActive = true
         
-        segmentController.addTarget(responder, action: #selector(responder.segmentedControlValueChanged(_:)), for: UIControlEvents.valueChanged)
-
         navigationController?.navigationBar.topItem?.title = "Recipes"
         segmentController.selectedSegmentIndex = TabIndex.discoverTab.rawValue
         displayCurrentTab(TabIndex.discoverTab.rawValue)
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
+        UIView.animate(withDuration: 0.2) {
+            buttonBar.frame.origin.x = (sender.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex) + 17
+        }
         self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()
         displayCurrentTab(sender.selectedSegmentIndex)

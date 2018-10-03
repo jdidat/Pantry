@@ -12,10 +12,9 @@ import Alamofire
 import AlamofireImage
 class RecipeCell: UITableViewCell {
     
-    @IBOutlet weak var recipieIngredients: UILabel!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
-    
+    @IBOutlet weak var cardView: UIView!
     
     var recipe: Recipe? {
         didSet {
@@ -29,7 +28,6 @@ class RecipeCell: UITableViewCell {
                     }
                 }
             }
-            recipieIngredients.text = recipe?.ingredients
         }
     }
 }

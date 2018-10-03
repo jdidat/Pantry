@@ -251,7 +251,7 @@
         <scene sceneID="k6E-Mc-xnC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="neD-DA-tBq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry" id="wrf-O9-aIP"/>
+                    <tabBarItem key="tabBarItem" title="Pantry" image="noun_pot_481289" selectedImage="noun_pot_481289" id="wrf-O9-aIP"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UWX-vV-ddJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -271,5 +271,6 @@
     <resources>
         <image name="icons8-search-more-24" width="18" height="18"/>
         <image name="icons8-user-filled-50" width="18" height="18"/>
+        <image name="noun_pot_481289" width="24" height="24"/>
     </resources>
 </document>

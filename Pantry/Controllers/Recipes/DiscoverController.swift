@@ -38,9 +38,22 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         return self.recipies.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Unselects cell after clicking on it
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipeCell", for: indexPath) as! RecipeCell
+        cell.cardView.layer.masksToBounds = false
+        cell.cardView.layer.cornerRadius = 20
+        cell.cardView.clipsToBounds = true
         cell.recipeImage.image = UIImage(named: "default")
+        cell.recipeImage.layer.borderWidth = 1
+        cell.recipeImage.layer.masksToBounds = false
+        cell.recipeImage.layer.borderColor = UIColor.black.cgColor
+        cell.recipeImage.layer.cornerRadius = cell.recipeImage.frame.height/2
+        cell.recipeImage.clipsToBounds = true
         cell.recipe = recipies[indexPath.row]
         return cell
     }
