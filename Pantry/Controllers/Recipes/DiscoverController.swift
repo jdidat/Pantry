@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TableFlip
 
 class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -27,6 +28,7 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             self.recipies = recipies
             DispatchQueue.main.async {
                 self.table.reloadData()
+                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
             }
         }
         
@@ -66,6 +68,14 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         table.delegate = self
         table.dataSource = self
         searchBar.delegate = self
+        APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
+            let recipies = searchResults.results
+            self.recipies = recipies
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

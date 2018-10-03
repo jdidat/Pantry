@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,25 +22,22 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LjQ-Hh-icr">
-                                <rect key="frame" x="82" y="28" width="211" height="29"/>
+                                <rect key="frame" x="16" y="28" width="343" height="29"/>
                                 <segments>
                                     <segment title="Discover"/>
                                     <segment title="Custom"/>
                                     <segment title="Saved"/>
                                 </segments>
-                                <connections>
-                                    <action selector="indexChanged:" destination="gcc-aM-HXA" eventType="valueChanged" id="hAc-xM-oWJ"/>
-                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LjQ-Hh-icr" firstAttribute="leading" secondItem="btF-Rd-oFg" secondAttribute="leading" constant="16" id="3Z4-ZX-qoM"/>
                             <constraint firstItem="nP1-mt-HvC" firstAttribute="trailing" secondItem="btF-Rd-oFg" secondAttribute="trailing" id="BpT-FA-nnJ"/>
-                            <constraint firstItem="LjQ-Hh-icr" firstAttribute="leading" secondItem="btF-Rd-oFg" secondAttribute="leading" constant="82" id="Emo-QF-Spg"/>
                             <constraint firstItem="nP1-mt-HvC" firstAttribute="leading" secondItem="btF-Rd-oFg" secondAttribute="leading" id="OlL-7z-B3k"/>
                             <constraint firstItem="nP1-mt-HvC" firstAttribute="top" secondItem="LjQ-Hh-icr" secondAttribute="bottom" constant="8" id="X2g-Em-Baj"/>
                             <constraint firstItem="LjQ-Hh-icr" firstAttribute="top" secondItem="btF-Rd-oFg" secondAttribute="top" constant="8" id="Zai-yP-6CO"/>
-                            <constraint firstItem="btF-Rd-oFg" firstAttribute="trailing" secondItem="LjQ-Hh-icr" secondAttribute="trailing" constant="82" id="qGh-oM-f4a"/>
+                            <constraint firstItem="btF-Rd-oFg" firstAttribute="trailing" secondItem="LjQ-Hh-icr" secondAttribute="trailing" constant="16" id="kEA-rE-aTH"/>
                             <constraint firstItem="nP1-mt-HvC" firstAttribute="bottom" secondItem="btF-Rd-oFg" secondAttribute="bottom" id="r3p-qZ-YWl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="btF-Rd-oFg"/>

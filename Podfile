@@ -15,6 +15,7 @@ target 'Pantry' do
   pod 'SwiftyButton'
   pod 'ACFloatingTextfield-Objc', '~> 1.7'
   pod 'Pastel'
+  pod 'TableFlip'
 
   target 'PantryTests' do
     inherit! :search_paths

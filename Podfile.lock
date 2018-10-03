@@ -128,6 +128,7 @@ PODS:
   - Pastel (0.5.1)
   - Protobuf (3.6.1)
   - SwiftyButton (0.8.2)
+  - TableFlip (1.2)
 
 DEPENDENCIES:
   - ACFloatingTextfield-Objc (~> 1.7)
@@ -139,6 +140,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Pastel
   - SwiftyButton
+  - TableFlip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -167,6 +169,7 @@ SPEC REPOS:
     - Pastel
     - Protobuf
     - SwiftyButton
+    - TableFlip
 
 SPEC CHECKSUMS:
   ACFloatingTextfield-Objc: 8780c7a0d96b2039d8a60d3461a4bbcd22e3faf3
@@ -194,7 +197,8 @@ SPEC CHECKSUMS:
   Pastel: b3dd5b8d612dac06ae7c63c97c45c900829bc139
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyButton: 5b0ef314e9cf61cf8a83e456ddd1ea1f53f30598
+  TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
 
-PODFILE CHECKSUM: e418ad01f3c3ce42d3804a09b758da2fa54f1196
+PODFILE CHECKSUM: d3ddae038d37b456c6987e0772362a4e3f636560
 
 COCOAPODS: 1.5.3
