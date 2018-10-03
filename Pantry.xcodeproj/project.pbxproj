@@ -17,6 +17,11 @@
 		83DD622D2130D70E00C92CBE /* PantryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD622C2130D70E00C92CBE /* PantryTests.swift */; };
 		83DD62382130D70E00C92CBE /* PantryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DD62372130D70E00C92CBE /* PantryUITests.swift */; };
 		8B5D9ED29ECE045CDA7DCA31 /* Pods_Pantry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE4243FB0A5C7EA759FF3C72 /* Pods_Pantry.framework */; };
+		A513FE322164388600FE20C0 /* Pantry.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A513FE312164388600FE20C0 /* Pantry.storyboard */; };
+		A513FE34216439F300FE20C0 /* PantryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE33216439F300FE20C0 /* PantryViewController.swift */; };
+		A513FE3721643FDF00FE20C0 /* CustomRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */; };
+		A513FE392164400100FE20C0 /* RecipeControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */; };
+		A513FE3D2164555600FE20C0 /* CustomRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE3C2164555600FE20C0 /* CustomRecipeCell.swift */; };
 		A53C8EB42162FBE300C7792F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C8EB32162FBE300C7792F /* APIManager.swift */; };
 		A575EC772161BF6E008BECEF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC762161BF6E008BECEF /* Recipe.swift */; };
 		A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC792161BFE7008BECEF /* RecipeCell.swift */; };
@@ -24,7 +29,7 @@
 		A575EC842161C05A008BECEF /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */; };
 		A593A220216336440068107B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593A21F216336440068107B /* LoginController.swift */; };
 		A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */; };
-		D87537322161739C000DF5F3 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Discover.storyboard */; };
+		D87537322161739C000DF5F3 /* Recipes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Recipes.storyboard */; };
 		D875373421617485000DF5F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875373321617485000DF5F3 /* Profile.storyboard */; };
 		D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87537372161784E000DF5F3 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +70,11 @@
 		83DD62332130D70E00C92CBE /* PantryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PantryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DD62372130D70E00C92CBE /* PantryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryUITests.swift; sourceTree = "<group>"; };
 		83DD62392130D70E00C92CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A513FE312164388600FE20C0 /* Pantry.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pantry.storyboard; sourceTree = "<group>"; };
+		A513FE33216439F300FE20C0 /* PantryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryViewController.swift; sourceTree = "<group>"; };
+		A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipesViewController.swift; sourceTree = "<group>"; };
+		A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeControllerViewController.swift; sourceTree = "<group>"; };
+		A513FE3C2164555600FE20C0 /* CustomRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipeCell.swift; sourceTree = "<group>"; };
 		A53C8EB32162FBE300C7792F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A575EC762161BF6E008BECEF /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A575EC792161BFE7008BECEF /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
@@ -72,7 +82,7 @@
 		A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		A593A21F216336440068107B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
-		D87537312161739C000DF5F3 /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		D87537312161739C000DF5F3 /* Recipes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipes.storyboard; sourceTree = "<group>"; };
 		D875373321617485000DF5F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D87537372161784E000DF5F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E9D9EDBBA9E81A78DAA0A133 /* Pods-PantryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +185,16 @@
 			path = PantryUITests;
 			sourceTree = "<group>";
 		};
+		A513FE3521643FC500FE20C0 /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				A575EC7D2161C05A008BECEF /* DiscoverController.swift */,
+				A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */,
+				A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
 		A53C8EB22162FBD100C7792F /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				A575EC792161BFE7008BECEF /* RecipeCell.swift */,
+				A513FE3C2164555600FE20C0 /* CustomRecipeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,11 +223,12 @@
 		A579F0EF21572D8300AD06C0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A513FE3521643FC500FE20C0 /* Recipes */,
 				A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */,
-				A575EC7D2161C05A008BECEF /* DiscoverController.swift */,
 				D87537372161784E000DF5F3 /* ProfileViewController.swift */,
 				A593A21F216336440068107B /* LoginController.swift */,
 				A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */,
+				A513FE33216439F300FE20C0 /* PantryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -228,9 +250,10 @@
 			isa = PBXGroup;
 			children = (
 				83DD621B2130D70C00C92CBE /* Main.storyboard */,
-				D87537312161739C000DF5F3 /* Discover.storyboard */,
+				D87537312161739C000DF5F3 /* Recipes.storyboard */,
 				83DD62202130D70E00C92CBE /* LaunchScreen.storyboard */,
 				D875373321617485000DF5F3 /* Profile.storyboard */,
+				A513FE312164388600FE20C0 /* Pantry.storyboard */,
 			);
 			path = "Story Boards";
 			sourceTree = "<group>";
@@ -346,8 +369,9 @@
 				83DD62222130D70E00C92CBE /* LaunchScreen.storyboard in Resources */,
 				D875373421617485000DF5F3 /* Profile.storyboard in Resources */,
 				19A66B67214EF86400F087F9 /* GoogleService-Info.plist in Resources */,
+				A513FE322164388600FE20C0 /* Pantry.storyboard in Resources */,
 				83DD621F2130D70E00C92CBE /* Assets.xcassets in Resources */,
-				D87537322161739C000DF5F3 /* Discover.storyboard in Resources */,
+				D87537322161739C000DF5F3 /* Recipes.storyboard in Resources */,
 				83DD621D2130D70C00C92CBE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,13 +495,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				A575EC842161C05A008BECEF /* CreateAccountViewController.swift in Sources */,
+				A513FE3D2164555600FE20C0 /* CustomRecipeCell.swift in Sources */,
 				D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */,
 				A53C8EB42162FBE300C7792F /* APIManager.swift in Sources */,
+				A513FE3721643FDF00FE20C0 /* CustomRecipesViewController.swift in Sources */,
 				A593A220216336440068107B /* LoginController.swift in Sources */,
+				A513FE34216439F300FE20C0 /* PantryViewController.swift in Sources */,
 				A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */,
 				A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */,
 				A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */,
 				A575EC772161BF6E008BECEF /* Recipe.swift in Sources */,
+				A513FE392164400100FE20C0 /* RecipeControllerViewController.swift in Sources */,
 				83DD62182130D70C00C92CBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

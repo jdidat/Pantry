@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.performSegue(withIdentifier: "homeSegue", sender: self)
             } else {
-                let alert = UIAlertController(title: "Alert", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

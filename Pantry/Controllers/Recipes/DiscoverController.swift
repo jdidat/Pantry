@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!

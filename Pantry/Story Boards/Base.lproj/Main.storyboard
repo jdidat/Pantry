@@ -103,6 +103,7 @@
                     <connections>
                         <segue destination="rqT-gE-BSj" kind="relationship" relationship="viewControllers" id="nFe-NU-gkZ"/>
                         <segue destination="XG0-yT-dsv" kind="relationship" relationship="viewControllers" id="JYa-fJ-fBG"/>
+                        <segue destination="neD-DA-tBq" kind="relationship" relationship="viewControllers" id="wQH-g5-v05"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir5-P5-ocN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,11 +120,21 @@
             </objects>
             <point key="canvasLocation" x="3037" y="437"/>
         </scene>
-        <!--Discover-->
+        <!--Pantry-->
+        <scene sceneID="v1f-AK-2AO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Pantry" id="3Xp-Ws-5ui" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="6af-mn-Seq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvT-5u-ytK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2997" y="1256"/>
+        </scene>
+        <!--Recipes-->
         <scene sceneID="eOv-rr-KW5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rqT-gE-BSj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="icons8-search-more-24" selectedImage="icons8-search-more-24" id="ciZ-5D-h0D">
+                    <tabBarItem key="tabBarItem" title="Recipes" image="icons8-search-more-24" selectedImage="icons8-search-more-24" id="ciZ-5D-h0D">
                         <color key="badgeColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -152,10 +163,10 @@
             </objects>
             <point key="canvasLocation" x="2044" y="-329.68515742128938"/>
         </scene>
-        <!--Discover-->
+        <!--Recipes-->
         <scene sceneID="m8I-Ng-fk6">
             <objects>
-                <viewControllerPlaceholder storyboardName="Discover" id="yeV-jD-r4n" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Recipes" id="yeV-jD-r4n" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="55r-fK-ffY"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wP9-WW-mFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,6 +195,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CaS-2J-fEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2044" y="438"/>
+        </scene>
+        <!--Pantry-->
+        <scene sceneID="k6E-Mc-xnC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="neD-DA-tBq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pantry" id="wrf-O9-aIP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UWX-vV-ddJ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3Xp-Ws-5ui" kind="relationship" relationship="rootViewController" id="waZ-gy-y0p"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xxv-ct-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2044" y="1257"/>
         </scene>
     </scenes>
     <resources>

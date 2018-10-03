@@ -69,4 +69,32 @@ class APIManager {
             }
         }
     }
+    
+    func createCustomRecipe(recipeName: String, description: String, completion: @escaping (Error?) -> ()) {
+        db.collection("customRecipies").document(Auth.auth().currentUser!.uid).setData([
+            recipeName: ["recipeName": recipeName, "description": description]
+        ]) {err in
+            if let err = err {
+                completion(err)
+            }
+            else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getCustomRecipes(completion: @escaping ([[String : Any]]?, Error?) -> ()) {
+        db.collection("customRecipies").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in
+            var customRecipies: [[String:Any]] = []
+            if err != nil {
+                completion(nil, err)
+            } else if let data = data?.data() {
+                for (_, recipeValues) in data {
+                    customRecipies.append(recipeValues as! [String:Any])
+                }
+                completion(customRecipies, nil)
+            }
+        }
+    }
+    
 }
