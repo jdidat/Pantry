@@ -20,7 +20,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
         let pastelView = PastelView(frame: view.bounds)
         
         // Custom Direction
@@ -43,6 +48,11 @@ class LoginViewController: UIViewController {
         pastelView.startAnimation()
         view.insertSubview(pastelView, at: 0)
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
