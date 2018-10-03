@@ -11,6 +11,7 @@ target 'Pantry' do
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage', '~> 3.4'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
 
   target 'PantryTests' do
     inherit! :search_paths

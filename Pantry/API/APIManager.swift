@@ -9,16 +9,28 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseStorage
 class APIManager {
-
+    
+    init() {
+        if let currentUser = Auth.auth().currentUser {
+            self.currentUserId = currentUser.uid;
+        } else {
+            self.currentUserId = ""
+        }
+    }
+    
+    let currentUserId: String
     static let shared = APIManager()
     let db = Firestore.firestore()
+    let storageRef = Storage.storage().reference()
     
     enum ErrorCodes: Error {
         case notFound
     }
     
     func get<T: Decodable>(urlString: String, completion: @escaping (T) -> ()) {
+        if !validateUser() {return}
         guard let url = URL(string: urlString) else {return}
         URLSession.shared.dataTask(with: url) { (data, respose, err) in
             guard let data = data else {return}
@@ -32,6 +44,7 @@ class APIManager {
     }
     
     func createUser(email: String, password: String, username: String, completion: @escaping (Error?) -> ()) {
+        if !validateUser() {return}
         Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
             Void in
             if (error == nil) {
@@ -55,6 +68,7 @@ class APIManager {
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
+        if !validateUser() {return}
         Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
             if err != nil {
                 completion(err)
@@ -65,6 +79,7 @@ class APIManager {
     }
     
     func getCurrentUserData(completion: @escaping ([String: Any]?, Error?) -> ()) {
+        if !validateUser() {return}
         db.collection("users").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in
             if err != nil {
                 completion(nil, err)
@@ -74,20 +89,60 @@ class APIManager {
         }
     }
     
-    func createCustomRecipe(recipeName: String, description: String, completion: @escaping (Error?) -> ()) {
-        db.collection("customRecipies").document(Auth.auth().currentUser!.uid).setData([
-            recipeName: ["recipeName": recipeName, "description": description]
-        ], options: SetOptions.merge()) {err in
-            if let err = err {
-                completion(err)
+    func uploadImage(image: Data, path: String, completion: @escaping (Error?, URL?) -> ()) {
+        if !validateUser() {return}
+        let ref = storageRef.child(path)
+        ref.putData(image, metadata: nil, completion: { (metadata, error) in
+            if let error = error {
+                completion(error, nil)
+            } else {
+                ref.downloadURL { (url, error) in
+                    if let error = error {
+                        completion(error, nil)
+                    } else {
+                        completion(nil, url)
+                    }
+                }
             }
-            else {
-                completion(nil)
+        })
+    }
+    
+    func createCustomRecipe(recipeName: String, description: String, image: UIImage?, completion: @escaping (Error?) -> ()) {
+        if !validateUser() {return}
+        if let image = image {
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/\(recipeName)", completion: { (error, url) in
+                if error == nil {
+                    self.db.collection("customRecipies").document(self.currentUserId).setData([
+                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!)]
+                    ], options: SetOptions.merge()) {err in
+                        if let err = err {
+                            completion(err)
+                        }
+                        else {
+                            completion(nil)
+                        }
+                    }
+                } else {
+                    completion(error)
+                }
+            })
+        } else {
+            db.collection("customRecipies").document(self.currentUserId).setData([
+                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil]
+            ], options: SetOptions.merge()) {err in
+                if let err = err {
+                    completion(err)
+                }
+                else {
+                    completion(nil)
+                }
             }
         }
     }
     
     func getCustomRecipes(completion: @escaping ([[String : Any]]?, Error?) -> ()) {
+        if !validateUser() {return}
         db.collection("customRecipies").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in
             var customRecipies: [[String:Any]] = []
             if err != nil  {
@@ -101,6 +156,10 @@ class APIManager {
                 completion(nil, ErrorCodes.notFound)
             }
         }
+    }
+    
+    func validateUser() -> Bool {
+        return self.currentUserId.count > 0
     }
     
 }

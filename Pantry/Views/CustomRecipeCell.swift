@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import AlamofireImage
 class CustomRecipeCell: UITableViewCell {
 
     @IBOutlet weak var customRecipeDescription: UILabel!
@@ -19,6 +20,17 @@ class CustomRecipeCell: UITableViewCell {
             if let customRecipe = customRecipe {
                 customRecipeTitle.text = customRecipe["recipeName"] as? String
                 customRecipeDescription.text = customRecipe["description"] as? String
+                if let urlString = customRecipe["imageURL"] as? String {
+                    if let url = URL(string: urlString) {
+                        let urlRequest = URLRequest(url: url)
+                        URLCache.shared.removeCachedResponse(for: urlRequest)
+                        Alamofire.request(url).responseImage { (response) in
+                            DispatchQueue.main.async {
+                                self.customRecipeImage.image = response.value
+                            }
+                        }
+                    }
+                }
             }
         }
     }
