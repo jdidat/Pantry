@@ -160,7 +160,7 @@ class APIManager {
                         values[currentRecipeName] = recipeValues
                     }
                 }
-                self.db.collection("customRecipies").document(self.currentUserId).setData(values) {err in
+                self.db.collection("customRecipes").document(self.currentUserId).setData(values) {err in
                     if let err = err {
                         completion(err)
                     }
@@ -174,7 +174,7 @@ class APIManager {
     
     func getCustomRecipes(completion: @escaping ([[String : Any]]?, Error?) -> ()) {
         if !validateUser() {return}
-        db.collection("customRecipies").document(self.currentUserId).getDocument { (data, err) in
+        db.collection("customRecipes").document(self.currentUserId).getDocument { (data, err) in
             var customRecipies: [[String:Any]] = []
             if err != nil  {
                 completion(nil, err)
