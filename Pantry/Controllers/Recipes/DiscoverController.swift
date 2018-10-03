@@ -49,7 +49,6 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         table.delegate = self
         table.dataSource = self
         searchBar.delegate = self
-        navigationController?.navigationBar.topItem?.title = "Discover"
         APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
             let recipies = searchResults.results
             self.recipies = recipies
@@ -59,4 +58,9 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! RecipeCell
+        let vc = segue.destination as! RecipeDetailsController
+        vc.selectedRecipe = cell.recipe!
+    }
 }

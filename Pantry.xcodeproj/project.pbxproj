@@ -22,6 +22,10 @@
 		A513FE3721643FDF00FE20C0 /* CustomRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */; };
 		A513FE392164400100FE20C0 /* RecipeControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */; };
 		A513FE3D2164555600FE20C0 /* CustomRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE3C2164555600FE20C0 /* CustomRecipeCell.swift */; };
+		A513FE3F216471D400FE20C0 /* SavedRecipesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE3E216471D400FE20C0 /* SavedRecipesController.swift */; };
+		A513FE412164771000FE20C0 /* CreateRecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE402164771000FE20C0 /* CreateRecipeController.swift */; };
+		A513FE4321647F3700FE20C0 /* RecipeDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE4221647F3700FE20C0 /* RecipeDetailsController.swift */; };
+		A513FE452164848500FE20C0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FE442164848500FE20C0 /* WebViewController.swift */; };
 		A53C8EB42162FBE300C7792F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C8EB32162FBE300C7792F /* APIManager.swift */; };
 		A575EC772161BF6E008BECEF /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC762161BF6E008BECEF /* Recipe.swift */; };
 		A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC792161BFE7008BECEF /* RecipeCell.swift */; };
@@ -75,6 +79,10 @@
 		A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipesViewController.swift; sourceTree = "<group>"; };
 		A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeControllerViewController.swift; sourceTree = "<group>"; };
 		A513FE3C2164555600FE20C0 /* CustomRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipeCell.swift; sourceTree = "<group>"; };
+		A513FE3E216471D400FE20C0 /* SavedRecipesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRecipesController.swift; sourceTree = "<group>"; };
+		A513FE402164771000FE20C0 /* CreateRecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecipeController.swift; sourceTree = "<group>"; };
+		A513FE4221647F3700FE20C0 /* RecipeDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsController.swift; sourceTree = "<group>"; };
+		A513FE442164848500FE20C0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A53C8EB32162FBE300C7792F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A575EC762161BF6E008BECEF /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		A575EC792161BFE7008BECEF /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
@@ -191,6 +199,9 @@
 				A575EC7D2161C05A008BECEF /* DiscoverController.swift */,
 				A513FE3621643FDF00FE20C0 /* CustomRecipesViewController.swift */,
 				A513FE382164400100FE20C0 /* RecipeControllerViewController.swift */,
+				A513FE3E216471D400FE20C0 /* SavedRecipesController.swift */,
+				A513FE402164771000FE20C0 /* CreateRecipeController.swift */,
+				A513FE4221647F3700FE20C0 /* RecipeDetailsController.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 				A593A21F216336440068107B /* LoginController.swift */,
 				A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */,
 				A513FE33216439F300FE20C0 /* PantryViewController.swift */,
+				A513FE442164848500FE20C0 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -503,6 +515,10 @@
 				A513FE34216439F300FE20C0 /* PantryViewController.swift in Sources */,
 				A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */,
 				A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */,
+				A513FE412164771000FE20C0 /* CreateRecipeController.swift in Sources */,
+				A513FE4321647F3700FE20C0 /* RecipeDetailsController.swift in Sources */,
+				A513FE3F216471D400FE20C0 /* SavedRecipesController.swift in Sources */,
+				A513FE452164848500FE20C0 /* WebViewController.swift in Sources */,
 				A575EC7A2161BFE7008BECEF /* RecipeCell.swift in Sources */,
 				A575EC772161BF6E008BECEF /* Recipe.swift in Sources */,
 				A513FE392164400100FE20C0 /* RecipeControllerViewController.swift in Sources */,

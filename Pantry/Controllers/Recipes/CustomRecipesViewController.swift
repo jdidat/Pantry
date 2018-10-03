@@ -12,24 +12,35 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var table: UITableView!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
+    
     var customRecipes : [[String:Any]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.delegate = self
-        table.dataSource = self
-        APIManager.shared.getCustomRecipes { (customRecipes: [[String:Any]]?, err) in
-            if err != nil {
-                print(err?.localizedDescription)
+        self.table.delegate = self
+        self.table.dataSource = self
+        self.table.addSubview(self.refreshControl)
+        self.refreshControl.beginRefreshing()
+        getRecipies { (err) in
+            if let err = err {
+                print(err.localizedDescription)
             } else {
-                self.customRecipes = customRecipes!
-                print(self.customRecipes)
                 DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
                     self.table.reloadData()
                 }
             }
         }
     }
+    
+    /* Table code start */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.customRecipes.count
@@ -42,18 +53,37 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
-
-    @IBAction func addRecipe(_ sender: UIButton) {
-        APIManager.shared.createCustomRecipe(recipeName: "Cheese String", description: "Jackson's favorite") { (err) in
-            if err != nil {
-                let alert = UIAlertController(title: "Error", message: err!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        getRecipies { (err) in
+            if err == nil {
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    self.table.reloadData()
+                }
+            }
+        }
+        
+    }
+    
+    /*Table code end*/
+    
+    func getRecipies(completion: @escaping (Error?)->()){
+        APIManager.shared.getCustomRecipes { (customRecipes: [[String:Any]]?, err) in
+            if let err = err {
+                switch err {
+                case APIManager.ErrorCodes.notFound:
+                    //Add UI label to tell user to add recipe
+                    break
+                default:
+                    print("Unknown error")
+                }
+                completion(err)
             } else {
-                let alert = UIAlertController(title: "Success", message: "Saved custom recipe!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self.customRecipes = customRecipes!
+                completion(nil)
             }
         }
     }
+    
 }
