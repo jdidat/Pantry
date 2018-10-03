@@ -31,6 +31,9 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         getRecipies { (err) in
             if let err = err {
                 print(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
             } else {
                 DispatchQueue.main.async {
                     self.refreshControl.endRefreshing()

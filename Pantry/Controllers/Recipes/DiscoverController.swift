@@ -66,13 +66,6 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         table.delegate = self
         table.dataSource = self
         searchBar.delegate = self
-        APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
-            let recipies = searchResults.results
-            self.recipies = recipies
-            DispatchQueue.main.async {
-                self.table.reloadData()
-            }
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

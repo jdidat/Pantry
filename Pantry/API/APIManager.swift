@@ -13,14 +13,19 @@ import FirebaseStorage
 class APIManager {
     
     init() {
-        if let currentUser = Auth.auth().currentUser {
-            self.currentUserId = currentUser.uid;
-        } else {
-            self.currentUserId = ""
+        if let user = Auth.auth().currentUser {
+            self.currentUserId = user.uid
+        }
+        Auth.auth().addStateDidChangeListener { auth, user in
+            if let user = user {
+                self.currentUserId = user.uid
+            } else {
+                self.currentUserId = ""
+            }
         }
     }
     
-    let currentUserId: String
+    var currentUserId: String = ""
     static let shared = APIManager()
     let db = Firestore.firestore()
     let storageRef = Storage.storage().reference()
@@ -44,7 +49,6 @@ class APIManager {
     }
     
     func createUser(email: String, password: String, username: String, completion: @escaping (Error?) -> ()) {
-        //if !validateUser() {return}
         Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
             Void in
             if (error == nil) {
@@ -68,7 +72,6 @@ class APIManager {
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
-        //if !validateUser() {return}
         Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
             if err != nil {
                 completion(err)
@@ -113,7 +116,7 @@ class APIManager {
             let imageData = UIImageJPEGRepresentation(image, 0.5)
             self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/\(recipeName)", completion: { (error, url) in
                 if error == nil {
-                    self.db.collection("customRecipies").document(self.currentUserId).setData([
+                    self.db.collection("customRecipes").document(self.currentUserId).setData([
                         recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!)]
                     ], merge: true) {err in
                         if let err = err {
@@ -128,7 +131,7 @@ class APIManager {
                 }
             })
         } else {
-            db.collection("customRecipies").document(self.currentUserId).setData([
+            db.collection("customRecipes").document(self.currentUserId).setData([
                 recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil]
             ], merge: true) {err in
                 if let err = err {
@@ -143,6 +146,7 @@ class APIManager {
     
     
     func deleteCutomRecipe(recipeName: String, completion: @escaping (Error?) -> ()) {
+        if !validateUser() {return}
         getCustomRecipes { (recipes, error) in
             var values:[String:Any] = [:]
             if let error = error {
