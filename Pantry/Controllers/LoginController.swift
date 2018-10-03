@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import Pastel
 
 class LoginViewController: UIViewController {
     
@@ -18,6 +19,28 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let pastelView = PastelView(frame: view.bounds)
+        
+        // Custom Direction
+        pastelView.startPastelPoint = .bottomLeft
+        pastelView.endPastelPoint = .topRight
+        
+        // Custom Duration
+        pastelView.animationDuration = 7.0
+        
+        // Custom Color
+        pastelView.setColors([UIColor(red: 252/255, green: 227/255, blue: 138/255, alpha: 1.0),
+                              UIColor(red: 243/255, green: 129/255, blue: 129/255, alpha: 1.0),
+                              UIColor(red: 245/255, green: 78/255, blue: 162/255, alpha: 1.0),
+                              UIColor(red: 255/255, green: 118/255, blue: 118/255, alpha: 1.0)//,
+                              //UIColor(red: 32/255, green: 158/255, blue: 255/255, alpha: 1.0),
+                              //UIColor(red: 90/255, green: 120/255, blue: 127/255, alpha: 1.0),
+                              //UIColor(red: 58/255, green: 255/255, blue: 217/255, alpha: 1.0)
+            ])
+        
+        pastelView.startAnimation()
+        view.insertSubview(pastelView, at: 0)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -53,6 +76,7 @@ class LoginViewController: UIViewController {
             if error == nil {
                 self.performSegue(withIdentifier: "homeSegue", sender: self)
             } else {
+                print("hello")
                 let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

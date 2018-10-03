@@ -12,6 +12,9 @@ target 'Pantry' do
   pod 'AlamofireImage', '~> 3.4'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'SwiftyButton'
+  pod 'ACFloatingTextfield-Objc', '~> 1.7'
+  pod 'Pastel'
 
   target 'PantryTests' do
     inherit! :search_paths

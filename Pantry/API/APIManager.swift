@@ -68,7 +68,9 @@ class APIManager {
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
-        if !validateUser() {return}
+        if !validateUser() {
+            return
+        }
         Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
             if err != nil {
                 completion(err)
