@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A56C63BD79FF5C5A2E7AD98972863B65"
+               BlueprintIdentifier = "6773FEEE133D44E5FE065C3CF31CEBCF"
                BuildableName = "RxLibrary.framework"
                BlueprintName = "gRPC-RxLibrary"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A56C63BD79FF5C5A2E7AD98972863B65"
+            BlueprintIdentifier = "6773FEEE133D44E5FE065C3CF31CEBCF"
             BuildableName = "RxLibrary.framework"
             BlueprintName = "gRPC-RxLibrary"
             ReferencedContainer = "container:Pods.xcodeproj">

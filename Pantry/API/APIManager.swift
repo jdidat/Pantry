@@ -48,18 +48,18 @@ class APIManager {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
             Void in
             if (error == nil) {
-                if let user = result {
+                if let user = result?.user {
                     self.db.collection("users").document(user.uid).setData([
                         "username": username,
                         "rating": 0.0,
                         "recipeCount": 0
-                    ]) {err in
-                        if let err = err {
-                            completion(err)
-                        } else {
-                            completion(nil)
-                        }
-                    }
+                        ], completion: ({err in
+                            if let err = err {
+                                completion(err)
+                            } else {
+                                completion(nil)
+                            }
+                        }))
                 } else {
                     completion(error)
                 }
@@ -80,7 +80,7 @@ class APIManager {
     
     func getCurrentUserData(completion: @escaping ([String: Any]?, Error?) -> ()) {
         if !validateUser() {return}
-        db.collection("users").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in
+        db.collection("users").document(currentUserId).getDocument { (data, err) in
             if err != nil {
                 completion(nil, err)
             } else {
@@ -115,7 +115,7 @@ class APIManager {
                 if error == nil {
                     self.db.collection("customRecipies").document(self.currentUserId).setData([
                         recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!)]
-                    ], options: SetOptions.merge()) {err in
+                    ], merge: true) {err in
                         if let err = err {
                             completion(err)
                         }
@@ -130,7 +130,7 @@ class APIManager {
         } else {
             db.collection("customRecipies").document(self.currentUserId).setData([
                 recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil]
-            ], options: SetOptions.merge()) {err in
+            ], merge: true) {err in
                 if let err = err {
                     completion(err)
                 }
@@ -170,7 +170,7 @@ class APIManager {
     
     func getCustomRecipes(completion: @escaping ([[String : Any]]?, Error?) -> ()) {
         if !validateUser() {return}
-        db.collection("customRecipies").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in
+        db.collection("customRecipies").document(self.currentUserId).getDocument { (data, err) in
             var customRecipies: [[String:Any]] = []
             if err != nil  {
                 completion(nil, err)
