@@ -43,6 +43,23 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let like = likeAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [like])
+    }
+    
+    func likeAction(at: IndexPath) -> UIContextualAction {
+        let recipe = self.recipies[at.row]
+        let action = UIContextualAction(style: .normal, title: "Like") { (action, view, completion) in
+            let alert = UIAlertController(title: "Saved", message: "Recipe has been saved for later use", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            completion(true)
+        }
+        action.backgroundColor = UIColor.green
+        return action
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

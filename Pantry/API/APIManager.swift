@@ -141,6 +141,33 @@ class APIManager {
         }
     }
     
+    
+    func deleteCutomRecipe(recipeName: String, completion: @escaping (Error?) -> ()) {
+        getCustomRecipes { (recipes, error) in
+            var values:[String:Any] = [:]
+            if let error = error {
+                completion(error)
+            } else {
+                for recipeValues in recipes! {
+                    if let currentRecipeName = recipeValues["recipeName"] as? String {
+                        if  currentRecipeName == recipeName {
+                            continue;
+                        }
+                        values[currentRecipeName] = recipeValues
+                    }
+                }
+                self.db.collection("customRecipies").document(self.currentUserId).setData(values) {err in
+                    if let err = err {
+                        completion(err)
+                    }
+                    else {
+                        completion(nil)
+                    }
+                }
+            }
+        }
+    }
+    
     func getCustomRecipes(completion: @escaping ([[String : Any]]?, Error?) -> ()) {
         if !validateUser() {return}
         db.collection("customRecipies").document(Auth.auth().currentUser!.uid).getDocument { (data, err) in

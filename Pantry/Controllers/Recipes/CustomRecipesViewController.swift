@@ -53,6 +53,38 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func deleteAction(at: IndexPath) -> UIContextualAction {
+        let recipe = self.customRecipes[at.row]
+        let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            if let recipeName = recipe["recipeName"] as? String {
+                APIManager.shared.deleteCutomRecipe(recipeName: recipeName, completion: { (error) in
+                    if error == nil {
+                        let alert = UIAlertController(title: "Deleted", message: "Recipe has been deleted", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.getRecipies { (err) in
+                            if let err = err {
+                                print(err.localizedDescription)
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.table.reloadData()
+                                }
+                            }
+                        }
+                    }
+                    completion(true)
+                })
+            }
+        }
+        action.backgroundColor = UIColor.red
+        return action
+    }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         getRecipies { (err) in
