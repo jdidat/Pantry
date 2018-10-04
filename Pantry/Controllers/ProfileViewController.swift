@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import Alamofire
 import AlamofireImage
+import Cosmos
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -17,6 +18,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var recipeNumber: UILabel!
     @IBOutlet weak var ratingNumber: UILabel!
     @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var ratingView: CosmosView!
     
     @IBAction func editProfile(_ sender: Any) {
         
@@ -28,6 +30,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             if let data = data {
                 self.username.text! = data["username"] as! String
                 self.ratingNumber.text! = String(describing: data["rating"] as! Double)
+                self.ratingView.rating = data["rating"] as! Double
                 self.recipeNumber.text! = String(describing: data["recipeCount"] as! Int)
                 if let url = URL(string: data["profileImageURL"] as! String) {
                     let urlRequest = URLRequest(url: url)

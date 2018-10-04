@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4CE7392EE2072DFE443A809A575122E6"
+               BlueprintIdentifier = "CDDD92220C5381429B4D5336C44912E2"
                BlueprintName = "TableFlip"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "TableFlip.framework">

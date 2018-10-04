@@ -16,6 +16,7 @@ target 'Pantry' do
   pod 'ACFloatingTextfield-Objc', '~> 1.7'
   pod 'Pastel'
   pod 'TableFlip'
+  pod 'Cosmos', '~> 17.0'
 
   target 'PantryTests' do
     inherit! :search_paths
