@@ -49,60 +49,62 @@ class APIManager {
     }
     
     func createUser(email: String, password: String, username: String, image: UIImage?, completion: @escaping (Error?) -> ()) {
-        if let image = image {
-            let imageData = UIImageJPEGRepresentation(image, 0.5)
-            self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/profile", completion: { (error, url) in
-                if error == nil {
-                    Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
-                        Void in
-                        if (error == nil) {
-                            if let user = result?.user {
-                                self.db.collection("users").document(user.uid).setData([
-                                    "username": username,
-                                    "rating": 0.0,
-                                    "recipeCount": 0,
-                                    "profileImageURL": String(describing: url!)
-                                    ], completion: ({err in
-                                        if let err = err {
-                                            completion(err)
-                                        } else {
-                                            completion(nil)
-                                        }
-                                    }))
-                            } else {
-                                completion(error)
-                            }
-                        }
-                    })
-                } else {
-                    print(error?.localizedDescription)
-                    completion(error)
-                }
-            })
-        } else {
             Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
                 Void in
-                if (error == nil) {
-                    if let user = result?.user {
-                        self.db.collection("users").document(user.uid).setData([
-                            "username": username,
-                            "rating": 0.0,
-                            "recipeCount": 0,
-                            "profileImageURL": ""
-                            ], completion: ({err in
-                                if let err = err {
-                                    completion(err)
+                if error == nil {
+                    if let image = image {
+                        if let user = result?.user {
+                            let imageData = UIImageJPEGRepresentation(image, 0.5)
+                            self.uploadImage(image: imageData!, path: "images/\(user.uid)/profile", completion: { (error, url) in
+                                if error == nil {
+                                    self.instantiateUserFirebase(username: username, user: user, imageURL: url, completion: { (error) in
+                                        if error == nil {
+                                            completion(nil)
+                                        } else {
+                                            completion(error)
+                                        }
+                                    })
                                 } else {
-                                    completion(nil)
+                                    completion(error)
                                 }
-                            }))
+                            })
+                        }
                     } else {
-                        completion(error)
+                        if let user = result?.user {
+                            self.instantiateUserFirebase(username: username, user: user, imageURL: nil, completion: { (error) in
+                                if error == nil {
+                                    completion(nil)
+                                } else {
+                                    completion(error)
+                                }
+                            })
+                        }
                     }
+                } else {
+                    completion(nil)
                 }
             })
+    }
+    
+    
+    func instantiateUserFirebase(username: String, user: User, imageURL: URL?, completion: @escaping (Error?)->()) {
+        var urlString = ""
+        if let url = imageURL {
+            urlString = String(describing: url)
         }
-        
+        self.db.collection("users").document(user.uid).setData([
+            "username": username,
+            "rating": 0.0,
+            "recipeCount": 0,
+            "profileImageURL": urlString
+            ], completion: ({err in
+                if let err = err {
+                    completion(err)
+                } else {
+                    completion(nil)
+                }
+            })
+        )
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
