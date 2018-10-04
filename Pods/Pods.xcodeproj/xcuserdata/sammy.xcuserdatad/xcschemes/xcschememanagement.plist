@@ -7,7 +7,7 @@
 		<key>ACFloatingTextfield-Objc.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>22</integer>
 		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
@@ -109,6 +109,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>24</integer>
+		</dict>
+		<key>TableFlip.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>gRPC-C++.xcscheme</key>
 		<dict>

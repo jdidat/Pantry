@@ -1,16 +1,13 @@
 const functions = require('firebase-functions');
-
-exports.userRecipeCountIncrement= functions.database.ref('/customRecipes').onWrite(
-    (change) => {
-        console.log(JSON.stringify(change));
+const admin = require('firebase-admin');
+exports.userRecipeCountUpdate = functions.firestore.document('customRecipes/{userId}').onWrite(
+    (change, context) => {
+        const {userId} = context.params;
+        const app = admin.app();
+        app.firestore()
     }
 );
 
-exports.userRecipeCountDecrement= functions.database.ref('/customRecipes').onDelete(
-    (change) => {
-        console.log(JSON.stringify(change));
-    }
-);
 
 
 // // Create and Deploy Your First Cloud Functions

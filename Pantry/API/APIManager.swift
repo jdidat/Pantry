@@ -48,27 +48,61 @@ class APIManager {
             }.resume()
     }
     
-    func createUser(email: String, password: String, username: String, completion: @escaping (Error?) -> ()) {
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
-            Void in
-            if (error == nil) {
-                if let user = result?.user {
-                    self.db.collection("users").document(user.uid).setData([
-                        "username": username,
-                        "rating": 0.0,
-                        "recipeCount": 0
-                        ], completion: ({err in
-                            if let err = err {
-                                completion(err)
+    func createUser(email: String, password: String, username: String, image: UIImage?, completion: @escaping (Error?) -> ()) {
+        if let image = image {
+            let imageData = UIImageJPEGRepresentation(image, 0.5)
+            self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/profile", completion: { (error, url) in
+                if error == nil {
+                    Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
+                        Void in
+                        if (error == nil) {
+                            if let user = result?.user {
+                                self.db.collection("users").document(user.uid).setData([
+                                    "username": username,
+                                    "rating": 0.0,
+                                    "recipeCount": 0,
+                                    "profileImageURL": String(describing: url!)
+                                    ], completion: ({err in
+                                        if let err = err {
+                                            completion(err)
+                                        } else {
+                                            completion(nil)
+                                        }
+                                    }))
                             } else {
-                                completion(nil)
+                                completion(error)
                             }
-                        }))
+                        }
+                    })
                 } else {
+                    print(error?.localizedDescription)
                     completion(error)
                 }
-            }
-        })
+            })
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (result, error) ->
+                Void in
+                if (error == nil) {
+                    if let user = result?.user {
+                        self.db.collection("users").document(user.uid).setData([
+                            "username": username,
+                            "rating": 0.0,
+                            "recipeCount": 0,
+                            "profileImageURL": ""
+                            ], completion: ({err in
+                                if let err = err {
+                                    completion(err)
+                                } else {
+                                    completion(nil)
+                                }
+                            }))
+                    } else {
+                        completion(error)
+                    }
+                }
+            })
+        }
+        
     }
     
     func loginUser(email: String, password: String, completion: @escaping (Error?) -> ()) {
@@ -93,7 +127,6 @@ class APIManager {
     }
     
     func uploadImage(image: Data, path: String, completion: @escaping (Error?, URL?) -> ()) {
-        if !validateUser() {return}
         let ref = storageRef.child(path)
         ref.putData(image, metadata: nil, completion: { (metadata, error) in
             if let error = error {

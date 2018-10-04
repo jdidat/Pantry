@@ -72,21 +72,10 @@ class LoginViewController: UIViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    @IBAction func create_account(_ sender: Any) {
-        APIManager.shared.createUser(email: email_address.text!, password: password.text!, username: "Test") { (error) in
-            if (error == nil) {
-                self.performSegue(withIdentifier: "homeSegue", sender: self)
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
-    }
     
     @IBAction func login(_ sender: UIButton) {
         APIManager.shared.loginUser(email: email_address.text!, password: password.text!) { (error) in
-            if error == nil {
-                self.performSegue(withIdentifier: "homeSegue", sender: self)
-            } else {
+            if error != nil {
                 let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

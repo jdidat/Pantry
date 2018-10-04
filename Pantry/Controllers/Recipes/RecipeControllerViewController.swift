@@ -8,14 +8,6 @@
 
 import UIKit
 
-class Responder: NSObject {
-    @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-                    UIView.animate(withDuration: 0.2) {
-                        buttonBar.frame.origin.x = (sender.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex) + 17
-                    }
-    }
-}
-let responder = Responder()
 let buttonBar = UIView()
 
 class RecipeControllerViewController: UIViewController {
@@ -50,24 +42,25 @@ class RecipeControllerViewController: UIViewController {
     }()
     
     @IBOutlet weak var segmentController: UISegmentedControl!
-    // The following few lines allow the current segment bar to be animated
-    // and actually follow the current segment
-
+    
+    let buttonBar = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        segmentController.addTarget(responder, action: #selector(responder.segmentedControlValueChanged(_:)), for: UIControlEvents.valueChanged)
+
         // Makes segmented controller REAL nice
         segmentController.backgroundColor = UIColor.clear
         segmentController.tintColor = UIColor.clear
-        segmentController.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "DINCondensed-Bold", size: 18), NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .normal)
+        segmentController.translatesAutoresizingMaskIntoConstraints = false
+        segmentController.setTitleTextAttributes([NSAttributedStringKey.font : UIFont(name: "DINCondensed-Bold", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .normal)
         segmentController.setTitleTextAttributes([
-            NSAttributedStringKey.font : UIFont(name: "DINCondensed-Bold", size: 18),
+            NSAttributedStringKey.font : UIFont(name: "DINCondensed-Bold", size: 18)!,
             NSAttributedStringKey.foregroundColor: salmonColor
             ], for: .selected)
         // Button below segmented controller showing current segment
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
         buttonBar.backgroundColor = salmonColor
-        view.addSubview(buttonBar)
+        segmentController.addSubview(buttonBar)
         // Constraints for the button
         buttonBar.topAnchor.constraint(equalTo: segmentController.bottomAnchor).isActive = true
         buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
@@ -75,13 +68,14 @@ class RecipeControllerViewController: UIViewController {
         buttonBar.widthAnchor.constraint(equalTo: segmentController.widthAnchor, multiplier: 1 / CGFloat(segmentController.numberOfSegments)).isActive = true
         
         navigationController?.navigationBar.topItem?.title = "Recipes"
+        
         segmentController.selectedSegmentIndex = TabIndex.discoverTab.rawValue
         displayCurrentTab(TabIndex.discoverTab.rawValue)
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {
         UIView.animate(withDuration: 0.2) {
-            buttonBar.frame.origin.x = (sender.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex) + 17
+            self.buttonBar.frame.origin.x = CGFloat(sender.selectedSegmentIndex) * (sender.frame.width / CGFloat(sender.numberOfSegments))
         }
         self.currentViewController!.view.removeFromSuperview()
         self.currentViewController!.removeFromParentViewController()
