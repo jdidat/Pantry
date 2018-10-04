@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import Pastel
 import ACFloatingTextfield_Objc
+import SwiftyButton
 class CreateAccountViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var usernameText: ACFloatingTextField!
@@ -17,6 +18,7 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var passwordText: ACFloatingTextField!
     @IBOutlet weak var confirmPassword: ACFloatingTextField!
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var registerButton: FlatButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +60,15 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func createAccount(_ sender: Any) {
+        if !checkValidFields() {return;}
+        self.registerButton.isEnabled = false
         if let password = passwordText.text {
             if let confirmPassword = confirmPassword.text {
                 if password != confirmPassword {
                     let alert = UIAlertController(title: "Wrong Password", message: "The passwords do not match", preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
+                    self.registerButton.isEnabled = true
                     return;
                 }
             }
@@ -71,10 +76,12 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
         guard let usernameText = usernameText.text else {return;}
         APIManager.shared.createUser(email: emailText.text!, password: passwordText.text!, username: usernameText, image: profileImage.image) { (error) in
             if (error == nil) {
+                self.registerButton.isEnabled = true
                 self.performSegue(withIdentifier: "homeSegue", sender: self)
             } else {
                 let alert = UIAlertController(title: "Wrong Password", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.registerButton.isEnabled = true
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -102,6 +109,8 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    func checkValidFields() -> Bool {
+        return (usernameText.text?.count)! >= 3 && (emailText.text?.count)! >= 4
+    }
 
 }

@@ -358,6 +358,7 @@
                         <outlet property="emailText" destination="Q8X-PI-9ph" id="eOj-XK-iD0"/>
                         <outlet property="passwordText" destination="5Uh-g1-qFh" id="uzH-GD-q72"/>
                         <outlet property="profileImage" destination="oW1-kF-5e8" id="oB1-qd-jXT"/>
+                        <outlet property="registerButton" destination="yHa-Gr-EoY" id="cLn-8H-mH2"/>
                         <outlet property="usernameText" destination="rar-9F-ws3" id="LOz-RY-cOc"/>
                         <segue destination="IHr-E1-9ao" kind="show" identifier="homeSegue" id="zhr-J4-EaH"/>
                     </connections>
@@ -512,6 +513,6 @@
         <image name="noun_pot_481289" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uju-4V-XBf"/>
+        <segue reference="zhr-J4-EaH"/>
     </inferredMetricsTieBreakers>
 </document>
