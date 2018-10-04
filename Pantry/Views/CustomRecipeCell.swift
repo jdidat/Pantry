@@ -14,6 +14,7 @@ class CustomRecipeCell: UITableViewCell {
     @IBOutlet weak var customRecipeDescription: UILabel!
     @IBOutlet weak var customRecipeTitle: UILabel!
     @IBOutlet weak var customRecipeImage: UIImageView!
+    @IBOutlet weak var cardView: UIView!
     
     var customRecipe: [String:Any]? {
         didSet {

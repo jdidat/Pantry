@@ -67,19 +67,33 @@ class RecipeControllerViewController: UIViewController {
         buttonBar.heightAnchor.constraint(equalToConstant: 5).isActive = true
         buttonBar.leftAnchor.constraint(equalTo: segmentController.leftAnchor).isActive = true
         buttonBar.widthAnchor.constraint(equalTo: segmentController.widthAnchor, multiplier: 1 / CGFloat(segmentController.numberOfSegments)).isActive = true
+        // Dark mode
+        if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            segmentController.backgroundColor = UIColor.black
+            myView.backgroundColor = UIColor.black
+        }
+        else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+            segmentController.backgroundColor = UIColor.clear
+            myView.backgroundColor = UIColor.white
+        }
         
         navigationController?.navigationBar.topItem?.title = "Recipes"
-        
+
         segmentController.selectedSegmentIndex = TabIndex.discoverTab.rawValue
         displayCurrentTab(TabIndex.discoverTab.rawValue)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // Dark mode
         if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             segmentController.backgroundColor = UIColor.black
             myView.backgroundColor = UIColor.black
         }
         else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
             segmentController.backgroundColor = UIColor.clear
             myView.backgroundColor = UIColor.white
         }

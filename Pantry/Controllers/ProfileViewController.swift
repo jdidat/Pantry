@@ -31,6 +31,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidAppear(_ animated: Bool) {
         if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             ratingView.backgroundColor = UIColor.black
             myTableView.backgroundColor = UIColor.black
             recipeNumber.textColor = UIColor.white
@@ -40,6 +41,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             ratingLabel.textColor = UIColor.white
         }
         else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
             ratingView.backgroundColor = UIColor.white
             myTableView.backgroundColor = UIColor.white
             recipeNumber.textColor = UIColor.black
@@ -80,6 +82,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
         profilePicture.clipsToBounds = true
         profilePicture.isUserInteractionEnabled = true
+        if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        }
+        else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
+        navigationController?.navigationBar.topItem?.title = "Profile"
         // Do any additional setup after loading the view.
         profilePicture.addGestureRecognizer(tapGestureRecognizer)
         

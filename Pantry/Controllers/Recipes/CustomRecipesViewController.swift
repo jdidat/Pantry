@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import NightNight
 
 class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet var myView: UIView!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -43,6 +45,19 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if NightNight.theme == .night {
+            table.backgroundColor = UIColor.black
+            myView.backgroundColor = UIColor.black
+            table.backgroundColor = UIColor.black
+        }
+        else {
+            table.backgroundColor = UIColor.white
+            myView.backgroundColor = UIColor.white
+            table.backgroundColor = UIColor.white
+        }
+    }
+    
     /* Table code start */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,7 +66,15 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customRecipeCell", for: indexPath) as! CustomRecipeCell
+        cell.cardView.layer.masksToBounds = false
+        cell.cardView.layer.cornerRadius = 20
+        cell.cardView.clipsToBounds = true
         cell.customRecipeImage.image = UIImage(named: "default")
+        cell.customRecipeImage.layer.borderWidth = 1
+        cell.customRecipeImage.layer.masksToBounds = false
+        cell.customRecipeImage.layer.borderColor = UIColor.black.cgColor
+        cell.customRecipeImage.layer.cornerRadius = cell.customRecipeImage.frame.height/2
+        cell.customRecipeImage.clipsToBounds = true
         cell.customRecipe = customRecipes[indexPath.row]
         return cell
     }
