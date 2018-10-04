@@ -17,6 +17,8 @@ target 'Pantry' do
   pod 'Pastel'
   pod 'TableFlip'
   pod 'Cosmos', '~> 17.0'
+  pod 'NightNight'
+
 
   target 'PantryTests' do
     inherit! :search_paths

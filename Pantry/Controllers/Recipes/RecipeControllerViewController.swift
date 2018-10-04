@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NightNight
 
 let buttonBar = UIView()
 
@@ -16,7 +17,7 @@ class RecipeControllerViewController: UIViewController {
     var salmonColor: UIColor = UIColor.init(red: 254/255, green: 105/255, blue: 100/255, alpha: 1.0)
     
     @IBOutlet weak var contentView: UIView!
-    
+    @IBOutlet var myView: UIView!
     
     enum TabIndex : Int {
         case discoverTab = 0
@@ -71,6 +72,17 @@ class RecipeControllerViewController: UIViewController {
         
         segmentController.selectedSegmentIndex = TabIndex.discoverTab.rawValue
         displayCurrentTab(TabIndex.discoverTab.rawValue)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (NightNight.theme == .night) {
+            segmentController.backgroundColor = UIColor.black
+            myView.backgroundColor = UIColor.black
+        }
+        else {
+            segmentController.backgroundColor = UIColor.clear
+            myView.backgroundColor = UIColor.white
+        }
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {

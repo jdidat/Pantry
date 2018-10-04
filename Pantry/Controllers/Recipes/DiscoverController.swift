@@ -8,6 +8,7 @@
 
 import UIKit
 import TableFlip
+import NightNight
 
 class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
@@ -88,6 +89,20 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
                 self.table.reloadData()
                 self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
             }
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        var textField = searchBar.value(forKey: "searchField") as? UITextField
+        if (NightNight.theme == .night) {
+            table.backgroundColor = UIColor.black
+            searchBar.backgroundColor = UIColor.black
+            textField?.textColor = UIColor.white
+        }
+        else {
+            table.backgroundColor = UIColor.white
+            searchBar.backgroundColor = UIColor.white
+            textField?.textColor = UIColor.black
         }
     }
     

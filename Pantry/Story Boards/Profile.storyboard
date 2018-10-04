@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iJO-xn-ayt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iJO-xn-ayt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +37,9 @@
                                 <rect key="frame" x="16" y="95" width="110" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.64235009517766495" green="0.27428963782114785" blue="0.38937418546051611" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="ignoresInvertColors" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8f-Ua-3K3">
                                 <rect key="frame" x="16" y="220" width="112" height="21"/>
@@ -120,9 +123,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="VLl-Kx-SQQ"/>
                     <connections>
+                        <outlet property="myTableView" destination="k68-Nr-Ug0" id="c6o-le-xFk"/>
+                        <outlet property="myView" destination="VUV-re-n55" id="Kdz-I8-pgI"/>
                         <outlet property="profilePicture" destination="Hb9-5e-kKf" id="agt-Qs-3Pc"/>
+                        <outlet property="ratingLabel" destination="r1W-rk-drX" id="Uyl-Va-A35"/>
                         <outlet property="ratingNumber" destination="SQo-Ye-PSK" id="4OT-Mp-37y"/>
                         <outlet property="ratingView" destination="KgT-yM-S1I" id="Jbg-qm-c95"/>
+                        <outlet property="recipeLabel" destination="3gQ-CI-pBi" id="rlu-5s-ohr"/>
                         <outlet property="recipeNumber" destination="JJi-iO-Bar" id="LTA-tg-mZt"/>
                         <outlet property="username" destination="q8f-Ua-3K3" id="3Hv-12-DMY"/>
                     </connections>
@@ -146,9 +153,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cB-63-ll1">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8cB-63-ll1">
                                 <rect key="frame" x="267" y="116" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="darkMode:" destination="fCJ-1u-nim" eventType="valueChanged" id="HtP-KT-YfF"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdC-aB-t7D" customClass="FlatButton" customModule="SwiftyButton">
                                 <rect key="frame" x="78" y="523" width="219" height="30"/>
@@ -178,6 +188,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="27e-oh-TFL"/>
                     </view>
+                    <connections>
+                        <outlet property="darkModeButton" destination="8cB-63-ll1" id="NSu-0c-d4W"/>
+                        <outlet property="darkModeLabel" destination="LYU-rV-2Tz" id="xaf-zV-gLG"/>
+                        <outlet property="myView" destination="GCo-Lx-P9z" id="MIZ-AB-bp6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSJ-mV-wUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

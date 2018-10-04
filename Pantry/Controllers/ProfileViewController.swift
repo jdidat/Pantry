@@ -11,6 +11,7 @@ import FirebaseAuth
 import Alamofire
 import AlamofireImage
 import Cosmos
+import NightNight
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -19,13 +20,39 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var ratingNumber: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
+    @IBOutlet var myView: UIView!
+    @IBOutlet weak var recipeLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var myTableView: UITableView!
     
     @IBAction func editProfile(_ sender: Any) {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if (NightNight.theme == .night) {
+            ratingView.backgroundColor = UIColor.black
+            myTableView.backgroundColor = UIColor.black
+            recipeNumber.textColor = UIColor.white
+            ratingNumber.textColor = UIColor.white
+            username.textColor = UIColor.white
+            recipeLabel.textColor = UIColor.white
+            ratingLabel.textColor = UIColor.white
+        }
+        else {
+            ratingView.backgroundColor = UIColor.white
+            myTableView.backgroundColor = UIColor.white
+            recipeNumber.textColor = UIColor.black
+            ratingNumber.textColor = UIColor.black
+            username.textColor = UIColor.black
+            recipeLabel.textColor = UIColor.black
+            ratingLabel.textColor = UIColor.black
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        myView.mixedBackgroundColor =  MixedColor(normal: 0xffffff, night: 0x000000)
         APIManager.shared.getCurrentUserData(completion: { (data, err) in
             if let data = data {
                 self.username.text! = data["username"] as! String

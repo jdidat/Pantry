@@ -126,6 +126,7 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - NightNight (0.5.0)
   - Pastel (0.5.1)
   - Protobuf (3.6.1)
   - SwiftyButton (0.8.2)
@@ -140,12 +141,13 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
+  - NightNight
   - Pastel
   - SwiftyButton
   - TableFlip
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - ACFloatingTextfield-Objc
     - Alamofire
     - AlamofireImage
@@ -169,6 +171,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - NightNight
     - Pastel
     - Protobuf
     - SwiftyButton
@@ -198,11 +201,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  NightNight: 2a5550fdd9cf424b75ebaab022c26aaba35304c8
   Pastel: b3dd5b8d612dac06ae7c63c97c45c900829bc139
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyButton: 5b0ef314e9cf61cf8a83e456ddd1ea1f53f30598
   TableFlip: 2ae22773412b295a7cbc54d95b44085bb28092f6
 
-PODFILE CHECKSUM: 27ad5e1d663cd40dae13cfd5cab8647b28482462
+PODFILE CHECKSUM: 9ae10ef2213a2d12e94bf80b630b01e75f3a3a83
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
