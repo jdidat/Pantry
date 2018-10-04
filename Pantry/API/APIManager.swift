@@ -224,6 +224,16 @@ class APIManager {
         }
     }
     
+    func updateUserEntry(entry: String, value: String, completion: @escaping (Error?)->()) {
+        db.collection("users").document(self.currentUserId).setData([entry:value], merge: true) {err in
+            if err == nil {
+                completion(err)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     func validateUser() -> Bool {
         return self.currentUserId.count > 0
     }

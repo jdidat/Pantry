@@ -62,13 +62,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzN-i7-cTj">
-                                <rect key="frame" x="293" y="28" width="74" height="30"/>
-                                <state key="normal" title="Add recipe"/>
-                                <connections>
-                                    <segue destination="73o-PC-IG9" kind="presentation" id="MVP-Ou-MFP"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-88-CGV">
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,15 +112,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzN-i7-cTj" customClass="FlatButton" customModule="SwiftyButton">
+                                <rect key="frame" x="259" y="28" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WWn-KQ-emn"/>
+                                    <constraint firstAttribute="width" constant="100" id="fXN-Kw-jYg"/>
+                                </constraints>
+                                <state key="normal" title="Add recipe">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="73o-PC-IG9" kind="presentation" id="MVP-Ou-MFP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="kzN-i7-cTj" secondAttribute="bottom" constant="8" id="Ag7-KG-TeQ"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="TKz-NR-t3n"/>
+                            <constraint firstItem="w3V-9G-Yz1" firstAttribute="trailing" secondItem="kzN-i7-cTj" secondAttribute="trailing" constant="16" id="aKN-oc-KX4"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="j5G-e9-gNU"/>
-                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="kzN-i7-cTj" secondAttribute="bottom" constant="8" id="oWh-Xy-GKv"/>
-                            <constraint firstItem="w3V-9G-Yz1" firstAttribute="trailing" secondItem="kzN-i7-cTj" secondAttribute="trailing" constant="8" id="tC9-cX-sBv"/>
+                            <constraint firstItem="kzN-i7-cTj" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" constant="8" id="pEx-yf-NrU"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="bottom" secondItem="w3V-9G-Yz1" secondAttribute="bottom" id="tPh-9j-Bgg"/>
-                            <constraint firstItem="kzN-i7-cTj" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" constant="8" id="uaN-fm-oNK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w3V-9G-Yz1"/>
                     </view>
@@ -310,16 +321,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjM-GJ-IDr">
-                                <rect key="frame" x="136" y="288" width="103" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="View Webpage"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjM-GJ-IDr" customClass="FlatButton" customModule="SwiftyButton">
+                                <rect key="frame" x="249" y="28" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Exr-eT-SzW"/>
+                                    <constraint firstAttribute="height" constant="30" id="O13-pt-jYH"/>
+                                    <constraint firstAttribute="width" constant="110" id="lBs-JO-PWU"/>
+                                </constraints>
+                                <state key="normal" title="View Webpage">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="CAK-W2-pc8" kind="show" identifier="webViewSegue" id="jeE-bh-YQM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLn-jd-b1i" firstAttribute="trailing" secondItem="HjM-GJ-IDr" secondAttribute="trailing" constant="16" id="MTl-w9-GmB"/>
+                            <constraint firstItem="HjM-GJ-IDr" firstAttribute="top" secondItem="pLn-jd-b1i" secondAttribute="top" constant="8" id="OR2-Zz-aGC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pLn-jd-b1i"/>
                     </view>
                 </viewController>

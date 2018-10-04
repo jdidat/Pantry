@@ -11,7 +11,7 @@ import FirebaseAuth
 import Alamofire
 import AlamofireImage
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var recipeNumber: UILabel!
@@ -42,15 +42,56 @@ class ProfileViewController: UIViewController {
                 print(err!.localizedDescription)
             }
         })
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         //Make Profile Picture Circular
         profilePicture.layer.borderWidth = 1
         profilePicture.layer.masksToBounds = false
         profilePicture.layer.borderColor = UIColor.black.cgColor
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
         profilePicture.clipsToBounds = true
+        profilePicture.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
+        profilePicture.addGestureRecognizer(tapGestureRecognizer)
+        
     }
 
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true) {
+        
+        }
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profilePicture.image = image
+            let data = UIImageJPEGRepresentation(image, 0.5)
+            if let user = Auth.auth().currentUser {
+                APIManager.shared.uploadImage(image: data!, path: "images/\(user.uid)/profile", completion: { (error, url) in
+                    if error == nil && url != nil {
+                        APIManager.shared.updateUserEntry(entry: "profileURL", value: String(describing: url!), completion: { (err) in
+                            if err == nil {
+                                let alert = UIAlertController(title: "Saved", message: "Profile image has been updated", preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                            } else {
+                                let alert = UIAlertController(title: "Error", message: err!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        })
+                    }
+                })
+            }
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
