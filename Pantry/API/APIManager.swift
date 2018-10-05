@@ -15,16 +15,20 @@ class APIManager {
     init() {
         if let user = Auth.auth().currentUser {
             self.currentUserId = user.uid
+            self.currentUser = user
         }
         Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
                 self.currentUserId = user.uid
+                self.currentUser = user
             } else {
                 self.currentUserId = ""
             }
         }
     }
     
+    
+    var currentUser: User?
     var currentUserId: String = ""
     static let shared = APIManager()
     let db = Firestore.firestore()
@@ -227,9 +231,9 @@ class APIManager {
     func updateUserEntry(entry: String, value: String, completion: @escaping (Error?)->()) {
         db.collection("users").document(self.currentUserId).setData([entry:value], merge: true) {err in
             if err == nil {
-                completion(err)
-            } else {
                 completion(nil)
+            } else {
+                completion(err)
             }
         }
     }
