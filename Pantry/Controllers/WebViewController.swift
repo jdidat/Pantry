@@ -13,6 +13,15 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     var URL: URL?
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    @IBAction func close(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let URL = URL {

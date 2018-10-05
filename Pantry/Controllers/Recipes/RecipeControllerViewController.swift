@@ -46,6 +46,21 @@ class RecipeControllerViewController: UIViewController {
     
     let buttonBar = UIView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        // Dark mode
+        if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            segmentController.backgroundColor = UIColor.black
+            myView.backgroundColor = UIColor.black
+        }
+        else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+            segmentController.backgroundColor = UIColor.clear
+            myView.backgroundColor = UIColor.white
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -83,20 +98,6 @@ class RecipeControllerViewController: UIViewController {
 
         segmentController.selectedSegmentIndex = TabIndex.discoverTab.rawValue
         displayCurrentTab(TabIndex.discoverTab.rawValue)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        // Dark mode
-        if (NightNight.theme == .night) {
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-            segmentController.backgroundColor = UIColor.black
-            myView.backgroundColor = UIColor.black
-        }
-        else {
-            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-            segmentController.backgroundColor = UIColor.clear
-            myView.backgroundColor = UIColor.white
-        }
     }
     
     @IBAction func indexChanged(_ sender: UISegmentedControl) {

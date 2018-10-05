@@ -26,7 +26,8 @@ class ProfileSettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
         if (NightNight.theme == .night) {
             darkModeButton.setOn(true, animated: true)
             darkModeButton.isSelected = true
@@ -98,15 +99,20 @@ class ProfileSettingsViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: UIButton) {
-        do {
-            try Auth.auth().signOut()
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let lvc = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
-            UIApplication.shared.keyWindow?.rootViewController = lvc
-            UIApplication.shared.keyWindow?.makeKeyAndVisible()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        let alert = UIAlertController(title: "Sign Out", message: "Are you sure want to sign out?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            do {
+                try Auth.auth().signOut()
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let lvc = storyBoard.instantiateViewController(withIdentifier: "LoginScreen") as! LoginViewController
+                UIApplication.shared.keyWindow?.rootViewController = lvc
+                UIApplication.shared.keyWindow?.makeKeyAndVisible()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     @IBAction func changeUsername(_ sender: FlatButton) {

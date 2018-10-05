@@ -35,6 +35,27 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            recipies = []
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
+            }
+            return;
+        }
+        searchURLBase = "http://www.recipepuppy.com/api/?q=\(searchText)"
+        APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
+            let recipies = searchResults.results
+            self.recipies = recipies
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
+            }
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recipies.count
     }
