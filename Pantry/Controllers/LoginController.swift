@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
     weak var handle: NSObjectProtocol?
     
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     @IBOutlet weak var title_label: UILabel!
     
@@ -79,6 +80,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func login(_ sender: UIButton) {
+      
         APIManager.shared.loginUser(email: email_address.text!, password: password.text!) { (error) in
             if error != nil {
                 self.err_neither = error!.localizedDescription
@@ -86,6 +88,7 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            self.err_neither = error!.localizedDescription
         }
     }
 }

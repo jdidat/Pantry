@@ -20,6 +20,8 @@ class CreateAccountViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var registerButton: FlatButton!
     
+    @IBOutlet weak var alreadyButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))

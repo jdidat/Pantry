@@ -174,6 +174,7 @@
                         <outlet property="email_address" destination="9op-rR-1Ry" id="A1h-co-CHY"/>
                         <outlet property="loginButton" destination="Jzu-is-80k" id="omL-CJ-HA8"/>
                         <outlet property="password" destination="lS0-K0-UAG" id="Lsd-i7-lT0"/>
+                        <outlet property="registerButton" destination="ccy-ze-Knp" id="89X-aV-oBn"/>
                         <outlet property="title_label" destination="FWH-tb-X8J" id="OTC-b5-3iR"/>
                         <segue destination="IHr-E1-9ao" kind="show" identifier="homeSegue" id="uju-4V-XBf"/>
                     </connections>
@@ -185,7 +186,7 @@
         <!--Create Account View Controller-->
         <scene sceneID="i7v-m4-aW5">
             <objects>
-                <viewController id="9AH-OZ-42f" customClass="CreateAccountViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateAccount" id="9AH-OZ-42f" customClass="CreateAccountViewController" customModule="Pantry" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0li-Vd-KIq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -356,6 +357,7 @@
                         <viewLayoutGuide key="safeArea" id="gBO-i7-Gv7"/>
                     </view>
                     <connections>
+                        <outlet property="alreadyButton" destination="Efq-Qh-3kg" id="h1Y-cr-LU6"/>
                         <outlet property="confirmPassword" destination="Maf-FO-f0G" id="lkd-tf-lb2"/>
                         <outlet property="emailText" destination="Q8X-PI-9ph" id="eOj-XK-iD0"/>
                         <outlet property="passwordText" destination="5Uh-g1-qFh" id="uzH-GD-q72"/>
@@ -524,6 +526,6 @@
         <image name="noun_pot_481289" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uju-4V-XBf"/>
+        <segue reference="zhr-J4-EaH"/>
     </inferredMetricsTieBreakers>
 </document>
