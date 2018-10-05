@@ -334,7 +334,10 @@
                                             <outlet property="cardView" destination="k2b-w9-RHs" id="VWQ-It-Gr4"/>
                                             <outlet property="recipeImage" destination="VrA-nf-IoJ" id="EBn-oJ-6uU"/>
                                             <outlet property="recipeTitle" destination="Y91-K9-Xdd" id="6BS-xy-yJu"/>
-                                            <segue destination="YjZ-3R-YYm" kind="show" id="T28-Pk-3hD"/>
+                                            <segue destination="YjZ-3R-YYm" kind="show" id="T28-Pk-3hD">
+                                                <segue key="commit" inheritsFrom="parent" id="0uG-YY-cZ3"/>
+                                                <segue key="preview" inheritsFrom="commit" id="YCg-rH-sa5"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -401,9 +404,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="CAK-W2-pc8" kind="show" identifier="webViewSegue" id="jeE-bh-YQM"/>
+                                    <segue destination="CAK-W2-pc8" kind="show" identifier="webViewSegue" id="jeE-bh-YQM">
+                                        <segue key="commit" inheritsFrom="parent" id="P3j-CE-0d2"/>
+                                        <segue key="preview" inheritsFrom="commit" id="PBM-Ln-x1M"/>
+                                    </segue>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="XdR-3b-9s5">
+                                <rect key="frame" x="137" y="62" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -412,6 +422,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pLn-jd-b1i"/>
                     </view>
+                    <connections>
+                        <outlet property="recipeImage" destination="XdR-3b-9s5" id="ejE-Cv-dT7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMR-7i-lhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -467,4 +480,11 @@
             <point key="canvasLocation" x="-63" y="165"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="default" width="256" height="256"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jeE-bh-YQM"/>
+        <segue reference="T28-Pk-3hD"/>
+    </inferredMetricsTieBreakers>
 </document>

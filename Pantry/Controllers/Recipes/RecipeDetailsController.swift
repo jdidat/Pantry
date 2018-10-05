@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class RecipeDetailsController: UIViewController {
-
+    
+    @IBOutlet weak var recipeImage: UIImageView!
     var selectedRecipe:Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let url = URL(string: (selectedRecipe?.thumbnail)!) {
+            let urlRequest = URLRequest(url: url)
+            URLCache.shared.removeCachedResponse(for: urlRequest)
+            Alamofire.request(url).responseImage { (response) in
+                DispatchQueue.main.async {
+                    self.recipeImage.image = response.value
+                }
+            }
+        }
     }
     
     
