@@ -15,8 +15,13 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var email_address: ACFloatingTextField!
     @IBOutlet weak var password: ACFloatingTextField!
-    
+    var err_neither = "The password is invalid or the user does not have a password."
+    var err_no_email = "The email address is badly formatted."
     weak var handle: NSObjectProtocol?
+    
+    @IBOutlet weak var loginButton: UIButton!
+    
+    @IBOutlet weak var title_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +81,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         APIManager.shared.loginUser(email: email_address.text!, password: password.text!) { (error) in
             if error != nil {
+                self.err_neither = error!.localizedDescription
                 let alert = UIAlertController(title: "Error", message: error!.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)

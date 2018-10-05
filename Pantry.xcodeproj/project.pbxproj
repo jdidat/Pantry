@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		198366FF2166C66A002C3B55 /* testLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198366FE2166C66A002C3B55 /* testLogin.swift */; };
 		19A66B67214EF86400F087F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A66B66214EF86400F087F9 /* GoogleService-Info.plist */; };
 		566191B23932BD1C7D364A3B /* Pods_PantryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */; };
 		7190445F3C93CAD088BED387 /* Pods_PantryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7081036F3E1A3AA6829B9DC7 /* Pods_PantryTests.framework */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		03CE540DEF15662A0F77C8B2 /* Pods-Pantry.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pantry.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pantry/Pods-Pantry.release.xcconfig"; sourceTree = "<group>"; };
+		198366FE2166C66A002C3B55 /* testLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testLogin.swift; sourceTree = "<group>"; };
 		19A66B66214EF86400F087F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		249CC8874FB921CC94D3D6F8 /* Pods-PantryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PantryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +187,7 @@
 		83DD622B2130D70E00C92CBE /* PantryTests */ = {
 			isa = PBXGroup;
 			children = (
+				198366FE2166C66A002C3B55 /* testLogin.swift */,
 				83DD622C2130D70E00C92CBE /* PantryTests.swift */,
 				83DD622E2130D70E00C92CBE /* Info.plist */,
 			);
@@ -555,6 +558,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83DD622D2130D70E00C92CBE /* PantryTests.swift in Sources */,
+				198366FF2166C66A002C3B55 /* testLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
