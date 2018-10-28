@@ -91,7 +91,13 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             let alert = UIAlertController(title: "Saved", message: "Recipe has been saved for later use", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            completion(true)
+            APIManager.shared.saveRecipe(recipe: recipe, completion: { (err) in
+                if err == nil {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            })
         }
         action.backgroundColor = UIColor.green
         return action

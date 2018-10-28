@@ -14,6 +14,12 @@ struct Recipe: Decodable {
     var href: String
     var ingredients: String
     var thumbnail: String
+    init(dictionary: [String:Any]) {
+        self.title = dictionary["title"] as! String
+        self.href = dictionary["href"] as! String
+        self.ingredients = dictionary["ingredients"] as! String
+        self.thumbnail = dictionary["thumbnail"] as! String
+    }
 }
 
 struct RecipeSearch: Decodable {
