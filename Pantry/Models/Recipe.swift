@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct Recipe: Decodable {
     var title: String
     var href: String

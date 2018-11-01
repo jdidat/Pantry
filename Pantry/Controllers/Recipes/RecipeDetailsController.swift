@@ -16,7 +16,6 @@ class RecipeDetailsController: UIViewController {
     @IBOutlet weak var recipeImage: UIImageView!
     var selectedRecipe:Recipe?
     
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
