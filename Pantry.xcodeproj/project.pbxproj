@@ -10,6 +10,7 @@
 		198366FF2166C66A002C3B55 /* testLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198366FE2166C66A002C3B55 /* testLogin.swift */; };
 		198D14DA21894C4C007E027C /* testCookbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D14D921894C4C007E027C /* testCookbook.swift */; };
 		198D14DC218B7234007E027C /* testIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D14DB218B7233007E027C /* testIngredients.swift */; };
+		198D14DE218C017A007E027C /* testPantryContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D14DD218C017A007E027C /* testPantryContents.swift */; };
 		19A66B67214EF86400F087F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A66B66214EF86400F087F9 /* GoogleService-Info.plist */; };
 		566191B23932BD1C7D364A3B /* Pods_PantryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */; };
 		7190445F3C93CAD088BED387 /* Pods_PantryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7081036F3E1A3AA6829B9DC7 /* Pods_PantryTests.framework */; };
@@ -68,6 +69,7 @@
 		198366FE2166C66A002C3B55 /* testLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testLogin.swift; sourceTree = "<group>"; };
 		198D14D921894C4C007E027C /* testCookbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCookbook.swift; sourceTree = "<group>"; };
 		198D14DB218B7233007E027C /* testIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testIngredients.swift; sourceTree = "<group>"; };
+		198D14DD218C017A007E027C /* testPantryContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPantryContents.swift; sourceTree = "<group>"; };
 		19A66B66214EF86400F087F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		249CC8874FB921CC94D3D6F8 /* Pods-PantryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PantryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 				83DD622E2130D70E00C92CBE /* Info.plist */,
 				198D14D921894C4C007E027C /* testCookbook.swift */,
 				198D14DB218B7233007E027C /* testIngredients.swift */,
+				198D14DD218C017A007E027C /* testPantryContents.swift */,
 			);
 			path = PantryTests;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 			files = (
 				198D14DC218B7234007E027C /* testIngredients.swift in Sources */,
 				83DD622D2130D70E00C92CBE /* PantryTests.swift in Sources */,
+				198D14DE218C017A007E027C /* testPantryContents.swift in Sources */,
 				198366FF2166C66A002C3B55 /* testLogin.swift in Sources */,
 				198D14DA21894C4C007E027C /* testCookbook.swift in Sources */,
 			);
