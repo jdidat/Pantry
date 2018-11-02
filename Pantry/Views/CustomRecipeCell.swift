@@ -15,12 +15,16 @@ class CustomRecipeCell: UITableViewCell {
     @IBOutlet weak var customRecipeTitle: UILabel!
     @IBOutlet weak var customRecipeImage: UIImageView!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var customRecipeLikes: UILabel!
     
     var customRecipe: [String:Any]? {
         didSet {
             if let customRecipe = customRecipe {
                 customRecipeTitle.text = customRecipe["recipeName"] as? String
                 customRecipeDescription.text = customRecipe["description"] as? String
+                if let customLikes = customRecipe["likes"] as? Int {
+                    customRecipeLikes.text = String(customLikes)
+                }
                 if let urlString = customRecipe["imageURL"] as? String {
                     if let url = URL(string: urlString) {
                         let urlRequest = URLRequest(url: url)
@@ -36,6 +40,14 @@ class CustomRecipeCell: UITableViewCell {
         }
     }
     
+    
+    @IBAction func like(_ sender: Any) {
+        print("like")
+    }
+    
+    @IBAction func dislike(_ sender: Any) {
+        print("dislike")
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

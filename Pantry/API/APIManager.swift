@@ -156,7 +156,7 @@ class APIManager {
             self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/\(recipeName)", completion: { (error, url) in
                 if error == nil {
                     self.db.collection("customRecipes").document(self.currentUserId).setData([
-                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!)]
+                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!), "likes": 0]
                     ], merge: true) {err in
                         if let err = err {
                             completion(err)
@@ -171,7 +171,7 @@ class APIManager {
             })
         } else {
             db.collection("customRecipes").document(self.currentUserId).setData([
-                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil]
+                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil, "likes": 0]
             ], merge: true) {err in
                 if let err = err {
                     completion(err)

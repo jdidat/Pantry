@@ -33,6 +33,7 @@ class PantryViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

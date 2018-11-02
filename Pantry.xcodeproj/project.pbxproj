@@ -37,6 +37,7 @@
 		A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7D2161C05A008BECEF /* DiscoverController.swift */; };
 		A575EC842161C05A008BECEF /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */; };
 		A593A220216336440068107B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593A21F216336440068107B /* LoginController.swift */; };
+		A5B9B745218C030000BB786E /* CustomRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B9B744218C030000BB786E /* CustomRecipe.swift */; };
 		A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */; };
 		A5C6095C21859EBB00A85623 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6095B21859EBB00A85623 /* Ingredient.swift */; };
 		A5C6095E21859FD000A85623 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6095D21859FD000A85623 /* IngredientCell.swift */; };
@@ -102,6 +103,7 @@
 		A575EC7D2161C05A008BECEF /* DiscoverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		A575EC7F2161C05A008BECEF /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		A593A21F216336440068107B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		A5B9B744218C030000BB786E /* CustomRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecipe.swift; sourceTree = "<group>"; };
 		A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
 		A5C6095B21859EBB00A85623 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A5C6095D21859FD000A85623 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				A575EC762161BF6E008BECEF /* Recipe.swift */,
 				A5C6095B21859EBB00A85623 /* Ingredient.swift */,
+				A5B9B744218C030000BB786E /* CustomRecipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */,
 				A5C6095C21859EBB00A85623 /* Ingredient.swift in Sources */,
 				A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */,
+				A5B9B745218C030000BB786E /* CustomRecipe.swift in Sources */,
 				A513FE412164771000FE20C0 /* CreateRecipeController.swift in Sources */,
 				A513FE4321647F3700FE20C0 /* RecipeDetailsController.swift in Sources */,
 				A513FE3F216471D400FE20C0 /* SavedRecipesController.swift in Sources */,

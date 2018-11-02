@@ -21,9 +21,15 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let keywords = searchText.lowercased()
-        if allRecipies[keywords] != nil {
-            customRecipes[keywords] = allRecipies[keywords]
-        } else {
+        customRecipes = [:]
+        var count = 0
+        for(key, _) in allRecipies {
+            if key.contains(keywords) {
+                customRecipes[key] = allRecipies[key]
+                count += 1
+            }
+        }
+        if count == 0 {
             customRecipes = [:]
         }
         self.table.reloadData()
@@ -35,7 +41,29 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         self.table.delegate = self
         self.table.dataSource = self
         self.searchBar.delegate = self
-        
+        let textField = searchBar.value(forKey: "searchField") as? UITextField
+        if (NightNight.theme == .night) {
+            table.backgroundColor = UIColor.black
+            searchBar.backgroundColor = UIColor.black
+            textField?.textColor = UIColor.white
+        }
+        else {
+            table.backgroundColor = UIColor.white
+            searchBar.backgroundColor = UIColor.white
+            textField?.textColor = UIColor.black
+        }
+        APIManager.shared.getAllCustomRecipes { (recipes, err) in
+            if err != nil {
+                print("Error loading")
+            }
+            else {
+                self.allRecipies = recipes!
+                self.table.reloadData()
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         APIManager.shared.getAllCustomRecipes { (recipes, err) in
             if err != nil {
                 print("Error loading")
