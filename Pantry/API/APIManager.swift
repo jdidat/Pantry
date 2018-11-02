@@ -293,7 +293,7 @@ class APIManager {
         }
     }
     
-    func updateVotes(recipe: [String:Any], isLike: Bool, completion: @escaping(Error?)->()) {
+    func updateVotes(recipe: [String:Any], value: Int, completion: @escaping(Error?)->()) {
         let recipeName = recipe["recipeName"] as! String
         let recipeOwner = recipe["ownerId"] as! String
         let recipeLikes = recipe["likes"] as! Int
@@ -303,20 +303,32 @@ class APIManager {
                 if let values = values {
                     for(key, _) in values {
                         if key == recipeName {
-                            var adder = 0
-                            if isLike {
-                                adder = 1
-                            } else {
-                                adder = -1
+                            self.db.collection("customRecipes")
+                                .document(recipeOwner)
+                                .setData([recipeName: ["likes": recipeLikes + value]], merge: true) { err in
+                                    if err == nil {
+                                        completion(nil)
+                                    } else {
+                                        completion(err)
+                                    }
                             }
-                            self.db.collection("customRecipes").document(recipeOwner).setData([recipeName: ["likes": recipeLikes + adder]], merge: true)
                         }
                     }
                 }
             }
         })
     }
-    
+    func deleteSavedRecipe(recipeName: String, completion: @escaping(Error?)->()) {
+        db.collection("saved").document(currentUserId).updateData([
+            recipeName: FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    completion(err)
+                } else {
+                    completion(nil)
+                }
+        }
+    }
     
     func validateUser() -> Bool {
         return self.currentUserId.count > 0

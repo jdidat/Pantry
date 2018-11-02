@@ -10,7 +10,7 @@ import UIKit
 import NightNight
 
 class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     @IBOutlet var myView: UIView!
@@ -36,20 +36,27 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         updateTable(keywords: self.searchItem)
     }
     
+
+    
     func updateTable(keywords: String) {
-        customRecipes = []
+        self.customRecipes = []
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
         var count = 0
-        for(value) in allRecipies {
+        for (value) in self.allRecipies {
             let key = value["recipeName"] as! String
             if key.contains(keywords) {
-                customRecipes.append(value)
+                self.customRecipes.append(value)
                 count += 1
             }
         }
         if count == 0 {
-            customRecipes = []
+            self.customRecipes = []
         }
-        self.table.reloadData()
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
     }
     
     override func viewDidLoad() {
@@ -77,6 +84,16 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
             else {
                 self.allRecipies = recipes!
                 self.table.reloadData()
+            }
+        }
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomRecipesViewController.refreshTable), name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+    }
+    
+    @objc
+    func refreshTable() {
+        self.getRecipies { (err) in
+            if err == nil {
+                self.updateTable(keywords: self.searchItem)
             }
         }
     }
@@ -114,6 +131,7 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customRecipeCell", for: indexPath) as! CustomRecipeCell
+        cell.cardView.backgroundColor = UIColor(red: 255/255, green: 126/255, blue: 121/255, alpha: 1)
         cell.cardView.layer.masksToBounds = false
         cell.cardView.layer.cornerRadius = 20
         cell.cardView.clipsToBounds = true
@@ -124,6 +142,9 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         cell.customRecipeImage.layer.cornerRadius = cell.customRecipeImage.frame.height/2
         cell.customRecipeImage.clipsToBounds = true
         cell.customRecipe = customRecipes[indexPath.row]
+        if customRecipes[indexPath.row]["ownerId"] as! String == APIManager.shared.currentUserId {
+            cell.cardView.backgroundColor = UIColor.yellow
+        }
         return cell
     }
     
@@ -163,13 +184,19 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         APIManager.shared.getAllCustomRecipes { (recipes, err) in
             if err != nil {
                 print("Error loading")
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    self.table.reloadData()
+                }
+                completion(err)
             }
             else {
                 self.allRecipies = recipes!
-            }
-            DispatchQueue.main.async {
-                self.refreshControl.endRefreshing()
-                self.table.reloadData()
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    self.table.reloadData()
+                }
+                completion(nil)
             }
         }
     }
@@ -190,6 +217,25 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         self.sortByLikes()
         self.likesAsc = !self.likesAsc
         self.updateTable(keywords: self.searchItem)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Unselects cell after clicking on it
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "recipeDetailsSegue", sender: tableView.cellForRow(at: indexPath))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! CustomRecipeCell
+        let vc = segue.destination as! RecipeDetailsController
+        var recipe = cell.customRecipe!
+        recipe["title"] = recipe["recipeName"]
+        if let imageURL = recipe["imageURL"] as? String {
+            recipe["thumbnail"] = imageURL
+        }
+        recipe["ingredients"] = recipe["description"]
+        recipe["href"] = ""
+        vc.selectedRecipe = Recipe(dictionary: recipe)
     }
     
 }

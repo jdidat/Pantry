@@ -9,20 +9,30 @@
 import UIKit
 import TableFlip
 import NightNight
-
+import SwiftyButton
 class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var ingredientSearchButton: FlatButton!
     
     var searchURLBase = "http://www.recipepuppy.com/api/?q=steak"
+    var searchURLWithIngredients = ""
     var recipies: [Recipe] = []
+    var searchWithIngredients = false
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         var keywords = searchBar.text
         keywords = keywords?.replacingOccurrences(of: " ", with: "+")
         
+        
         searchURLBase = "http://www.recipepuppy.com/api/?q=\(keywords ?? "steak")"
+        
+        if searchWithIngredients {
+            searchURLBase += "&" + searchURLWithIngredients
+        }
+        
+        print(searchURLBase)
         
         APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
             let recipies = searchResults.results
@@ -45,6 +55,10 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             return;
         }
         searchURLBase = "http://www.recipepuppy.com/api/?q=\(searchText)"
+        
+        if searchWithIngredients {
+            searchURLBase += "&" + searchURLWithIngredients
+        }
         APIManager.shared.get(urlString: searchURLBase) { (searchResults: RecipeSearch) in
             let recipies = searchResults.results
             self.recipies = recipies
@@ -84,6 +98,7 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         let like = likeAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [like])
     }
+    
     
     func likeAction(at: IndexPath) -> UIContextualAction {
         let recipe = self.recipies[at.row]
@@ -143,16 +158,7 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             searchBar.backgroundColor = UIColor.white
             textField?.textColor = UIColor.black
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! RecipeCell
-        let vc = segue.destination as! RecipeDetailsController
-        vc.selectedRecipe = cell.recipe!
-    }
-    
-    @IBAction func searchByIngredients(_ sender: Any) {
-        var url = "http://www.recipepuppy.com/api/?i="
+        var url = "i="
         
         if let object = UserDefaults.standard.object(forKey: "ingredients") {
             var count: Int = 0
@@ -163,16 +169,22 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             if count == 0 {
                 return
             }
-            print(url)
+            self.searchURLWithIngredients = url
         }
-        
-        APIManager.shared.get(urlString: url) { (searchResults: RecipeSearch) in
-            let recipies = searchResults.results
-            self.recipies = recipies
-            DispatchQueue.main.async {
-                self.table.reloadData()
-                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
-            }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! RecipeCell
+        let vc = segue.destination as! RecipeDetailsController
+        vc.selectedRecipe = cell.recipe!
+    }
+    
+    @IBAction func searchByIngredients(_ sender: Any) {
+        self.searchWithIngredients = !self.searchWithIngredients
+        if self.searchWithIngredients {
+            self.ingredientSearchButton.setTitle("Ingredient Search (ON)", for: .normal)
+        } else {
+            self.ingredientSearchButton.setTitle("Ingredient Search (OFF)", for: .normal)
         }
     }
     

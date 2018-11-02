@@ -9,15 +9,29 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-
+import SwiftyButton
+import NightNight
 class RecipeDetailsController: UIViewController {
     
     @IBOutlet weak var recipeIngredients: UILabel!
     @IBOutlet weak var recipeImage: UIImageView!
     var selectedRecipe:Recipe?
+    @IBOutlet weak var viewWebpageButton: FlatButton!
+    @IBOutlet weak var ingredientsLabel: UILabel!
+    @IBOutlet weak var ingredientsDataLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
+        if (NightNight.theme == .night) {
+            self.view.backgroundColor = UIColor.black
+            self.ingredientsLabel.textColor = UIColor.white
+            self.ingredientsDataLabel.textColor = UIColor.white
+        }
+        else {
+            self.view.backgroundColor = UIColor.white
+            self.ingredientsLabel.textColor = UIColor.black
+            self.ingredientsDataLabel.textColor = UIColor.black
+        }
     }
     
     override func viewDidLoad() {
@@ -34,7 +48,12 @@ class RecipeDetailsController: UIViewController {
                 }
             }
         }
+        if selectedRecipe?.href == nil || (selectedRecipe?.href.isEmpty)! {
+            self.viewWebpageButton.isEnabled = false
+        }
     }
+    
+
     
     @IBAction func close(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

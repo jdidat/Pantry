@@ -9,13 +9,27 @@
 import UIKit
 import Alamofire
 import AlamofireImage
-class CustomRecipeCell: UITableViewCell {
 
+extension UIColor {
+    
+    static var systemBlue: UIColor {
+        return UIButton(type: .system).tintColor
+    }
+    
+}
+
+
+class CustomRecipeCell: UITableViewCell {
+    
     @IBOutlet weak var customRecipeDescription: UILabel!
     @IBOutlet weak var customRecipeTitle: UILabel!
     @IBOutlet weak var customRecipeImage: UIImageView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var customRecipeLikes: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var dislikeButton: UIButton!
+    
+    var isLoading = false
     
     var customRecipe: [String:Any]? {
         didSet {
@@ -36,6 +50,20 @@ class CustomRecipeCell: UITableViewCell {
                         }
                     }
                 }
+                if self.likeButton != nil {
+                    if let object = (UserDefaults.standard.string(forKey: (customRecipe["recipeName"] as! String) + (customRecipe["ownerId"] as! String))) {
+                        if object == "liked"{
+                            self.likeButton.setTitleColor(UIColor.green, for: .normal)
+                            self.dislikeButton.setTitleColor(UIColor.systemBlue, for: .normal)
+                        } else {
+                            self.likeButton.setTitleColor(UIColor.systemBlue, for: .normal)
+                            self.dislikeButton.setTitleColor(UIColor.red, for: .normal)
+                        }
+                    } else {
+                        self.likeButton.setTitleColor(UIColor.systemBlue, for: .normal)
+                        self.dislikeButton.setTitleColor(UIColor.systemBlue, for: .normal)
+                    }
+                }
             }
         }
     }
@@ -43,9 +71,41 @@ class CustomRecipeCell: UITableViewCell {
     
     @IBAction func like(_ sender: Any) {
         if let customRecipe = customRecipe {
-            APIManager.shared.updateVotes(recipe: customRecipe, isLike: true) { (err) in
-                if err != nil {
-                    print("Didn't work")
+            let key = (customRecipe["recipeName"] as! String) + (customRecipe["ownerId"] as! String)
+            if let object = UserDefaults.standard.string(forKey: key) {
+                if object == "liked" && !isLoading {
+                    isLoading = true
+                    APIManager.shared.updateVotes(recipe: customRecipe, value: -1) { (err) in
+                        if err != nil {
+                            print("Didn't work")
+                        } else {
+                            UserDefaults.standard.removeObject(forKey: key)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                        }
+                        self.isLoading = false
+                    }
+                } else if !isLoading {
+                    isLoading = true
+                    APIManager.shared.updateVotes(recipe: customRecipe, value: 2) { (err) in
+                        if err != nil {
+                            print("Didn't work")
+                        } else {
+                            UserDefaults.standard.set("liked", forKey: key)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                        }
+                        self.isLoading = false
+                    }
+                }
+            } else if !isLoading {
+                isLoading = true
+                APIManager.shared.updateVotes(recipe: customRecipe, value: 1) { (err) in
+                    if err != nil {
+                        print("Didn't work")
+                    } else {
+                        UserDefaults.standard.set("liked", forKey: key)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                    }
+                    self.isLoading = false
                 }
             }
         }
@@ -53,9 +113,44 @@ class CustomRecipeCell: UITableViewCell {
     
     @IBAction func dislike(_ sender: Any) {
         if let customRecipe = customRecipe {
-            APIManager.shared.updateVotes(recipe: customRecipe, isLike: false) { (err) in
-                if err != nil {
-                    print("Didn't work")
+            let key = (customRecipe["recipeName"] as! String) + (customRecipe["ownerId"] as! String)
+            if let object = UserDefaults.standard.string(forKey: key) {
+                if object == "disliked" && !isLoading {
+                    isLoading = true
+                    APIManager.shared.updateVotes(recipe: customRecipe, value: 1) { (err) in
+                        if err != nil {
+                            print("Didn't work")
+                        } else {
+                            print("HERE1")
+                            UserDefaults.standard.removeObject(forKey: key)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                        }
+                        self.isLoading = false
+                    }
+                } else if !isLoading {
+                    isLoading = true
+                    APIManager.shared.updateVotes(recipe: customRecipe, value: -2) { (err) in
+                        if err != nil {
+                            print("Didn't work")
+                        } else {
+                            print("HERE2")
+                            UserDefaults.standard.set("disliked", forKey: key)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                        }
+                        self.isLoading = false
+                    }
+                }
+            } else if !isLoading {
+                isLoading = true
+                APIManager.shared.updateVotes(recipe: customRecipe, value: -1) { (err) in
+                    if err != nil {
+                        print("Didn't work")
+                    } else {
+                        print("HERE3")
+                        UserDefaults.standard.set("disliked", forKey: key)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateTable"), object: nil)
+                    }
+                    self.isLoading = false
                 }
             }
         }

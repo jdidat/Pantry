@@ -14,7 +14,6 @@ class TabViewController: UITabBarController {
     @IBOutlet weak var myTabBar: UITabBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("yeet")
         // Do any additional setup after loading the view.
     }
     

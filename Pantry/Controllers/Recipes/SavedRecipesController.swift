@@ -78,14 +78,16 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
     func deleteAction(at: IndexPath) -> UIContextualAction {
         let recipe = self.recipes[at.row]
         let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
-            let alert = UIAlertController(title: "Deleted", message: "Recipe has been removed", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            APIManager.shared.saveRecipe(recipe: recipe, completion: { (err) in
+            APIManager.shared.deleteSavedRecipe(recipeName: recipe.title, completion: { (err) in
                 if err == nil {
-                    completion(true)
-                } else {
-                    completion(false)
+                    self.refreshControl.beginRefreshing()
+                    self.getSaved { (err) in
+                        self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
+                    }
+                    let alert = UIAlertController(title: "Deleted", message: "Recipe has been removed", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
         }
@@ -114,5 +116,14 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
             self.refreshControl.endRefreshing()
         }
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Unselects cell after clicking on it
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "recipeDetailsSegue", sender: tableView.cellForRow(at: indexPath))
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! RecipeCell
+        let vc = segue.destination as! RecipeDetailsController
+        vc.selectedRecipe = cell.recipe!
+    }
 }

@@ -145,6 +145,9 @@
                                             <outlet property="customRecipeImage" destination="4YM-Yl-iO3" id="v9H-VW-lXu"/>
                                             <outlet property="customRecipeLikes" destination="pir-71-32A" id="Uq7-YA-zqQ"/>
                                             <outlet property="customRecipeTitle" destination="OhV-8V-eNs" id="dPw-eZ-uyO"/>
+                                            <outlet property="dislikeButton" destination="UDo-jf-LRo" id="9E8-HO-oXQ"/>
+                                            <outlet property="likeButton" destination="HpO-AJ-pvF" id="eCg-ya-7Hc"/>
+                                            <segue destination="YjZ-3R-YYm" kind="presentation" identifier="recipeDetailsSegue" id="j7l-Va-NtH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -388,7 +391,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0X-Hd-D18" customClass="FlatButton" customModule="SwiftyButton">
                                 <rect key="frame" x="0.0" y="76" width="375" height="30"/>
-                                <state key="normal" title="Ingredient Search">
+                                <state key="normal" title="Ingredient Search (OFF)">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -434,6 +437,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="ingredientSearchButton" destination="e0X-Hd-D18" id="l1u-fd-1am"/>
                         <outlet property="searchBar" destination="Iy3-EX-U0s" id="C8b-Gc-ZXI"/>
                         <outlet property="table" destination="26l-Ja-KsA" id="9Yn-we-VnM"/>
                     </connections>
@@ -491,6 +495,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
                                         <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="CAK-W2-pc8" kind="presentation" identifier="webViewSegue" id="Qkv-oE-mnc">
@@ -512,6 +519,7 @@
                             <constraint firstItem="pLn-jd-b1i" firstAttribute="trailing" secondItem="XdR-3b-9s5" secondAttribute="trailing" constant="138" id="VkK-YC-5iV"/>
                             <constraint firstItem="3sW-Yc-4kR" firstAttribute="leading" secondItem="pLn-jd-b1i" secondAttribute="leading" constant="24" id="X1b-jx-cyj"/>
                             <constraint firstItem="3sW-Yc-4kR" firstAttribute="top" secondItem="HjM-GJ-IDr" secondAttribute="bottom" constant="11" id="fuY-s4-haS"/>
+                            <constraint firstItem="pLn-jd-b1i" firstAttribute="trailing" secondItem="HjM-GJ-IDr" secondAttribute="trailing" constant="93" id="gHY-nj-oJg"/>
                             <constraint firstItem="pLn-jd-b1i" firstAttribute="trailing" secondItem="3sW-Yc-4kR" secondAttribute="trailing" constant="206" id="l3u-ui-kbE"/>
                             <constraint firstItem="rhc-ZU-F6x" firstAttribute="leading" secondItem="pLn-jd-b1i" secondAttribute="leading" constant="24" id="uY6-IN-Jlp"/>
                             <constraint firstItem="pLn-jd-b1i" firstAttribute="trailing" secondItem="ch8-w0-KnF" secondAttribute="trailing" constant="8" id="zsV-Ws-pnp"/>
@@ -519,8 +527,11 @@
                         <viewLayoutGuide key="safeArea" id="pLn-jd-b1i"/>
                     </view>
                     <connections>
+                        <outlet property="ingredientsDataLabel" destination="ch8-w0-KnF" id="Beg-HR-jjx"/>
+                        <outlet property="ingredientsLabel" destination="3sW-Yc-4kR" id="3lW-em-IvJ"/>
                         <outlet property="recipeImage" destination="XdR-3b-9s5" id="ejE-Cv-dT7"/>
                         <outlet property="recipeIngredients" destination="ch8-w0-KnF" id="iYA-tZ-tiQ"/>
+                        <outlet property="viewWebpageButton" destination="HjM-GJ-IDr" id="d8l-MV-EfY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMR-7i-lhO" userLabel="First Responder" sceneMemberID="firstResponder"/>
