@@ -18,7 +18,7 @@ class IngredientCell: UITableViewCell {
     var ingredient: Ingredient? {
         didSet {
             ingredientTitle.text = ingredient?.title
-            ingredientCounter.text = String(ingredientCount)
+            ingredientCounter.text = String(ingredient!.count)
         }
     }
     
@@ -29,16 +29,15 @@ class IngredientCell: UITableViewCell {
     }
 
     @IBAction func decrease(_ sender: UIButton) {
-        if (ingredientCount == 0) {return}
-        ingredientCount -= 1
-        ingredientCounter.text = String(ingredientCount)
+        if (ingredientCount < 1) {return}
+        ingredient?.decrement()
+        ingredientCounter.text = String(ingredient!.count)
     }
     
     @IBAction func increase(_ sender: UIButton) {
         if (ingredientCount >= 100) {return}
-        ingredientCount += 1
-        ingredientCounter.text = String(ingredientCount)
-        
+        ingredient?.increment()
+        ingredientCounter.text = String(ingredient!.count)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

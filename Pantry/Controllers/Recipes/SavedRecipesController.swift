@@ -76,7 +76,7 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
                 }
             })
         }
-        action.backgroundColor = UIColor.green
+        action.backgroundColor = UIColor.red
         return action
     }
     

@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-88-CGV">
-                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="customRecipeCell" rowHeight="100" id="mhL-qb-uT4" customClass="CustomRecipeCell" customModule="Pantry" customModuleProvider="target">
@@ -125,32 +125,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzN-i7-cTj" customClass="FlatButton" customModule="SwiftyButton">
-                                <rect key="frame" x="259" y="28" width="100" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="WWn-KQ-emn"/>
-                                    <constraint firstAttribute="width" constant="100" id="fXN-Kw-jYg"/>
-                                </constraints>
-                                <state key="normal" title="Add recipe">
-                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                </state>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="LdB-vg-aaz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="nightBackgroundColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="normalBackgroundColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="73o-PC-IG9" kind="presentation" id="MVP-Ou-MFP"/>
-                                </connections>
-                            </button>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="kzN-i7-cTj" secondAttribute="bottom" constant="8" id="Ag7-KG-TeQ"/>
+                            <constraint firstItem="LdB-vg-aaz" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="ABn-1K-uKf"/>
+                            <constraint firstItem="LdB-vg-aaz" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" id="C1e-mh-yMf"/>
+                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="LdB-vg-aaz" secondAttribute="bottom" id="DfF-7t-JXJ"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="TKz-NR-t3n"/>
-                            <constraint firstItem="w3V-9G-Yz1" firstAttribute="trailing" secondItem="kzN-i7-cTj" secondAttribute="trailing" constant="16" id="aKN-oc-KX4"/>
+                            <constraint firstItem="LdB-vg-aaz" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="eWA-Gn-p5e"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="j5G-e9-gNU"/>
-                            <constraint firstItem="kzN-i7-cTj" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" constant="8" id="pEx-yf-NrU"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="bottom" secondItem="w3V-9G-Yz1" secondAttribute="bottom" id="tPh-9j-Bgg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w3V-9G-Yz1"/>
@@ -165,6 +161,7 @@
                     </view>
                     <connections>
                         <outlet property="myView" destination="gSt-ov-QbF" id="WVw-fU-Whl"/>
+                        <outlet property="searchBar" destination="LdB-vg-aaz" id="bPX-Cl-Ssa"/>
                         <outlet property="table" destination="8C0-88-CGV" id="ChE-bJ-jC9"/>
                     </connections>
                 </viewController>
@@ -268,7 +265,7 @@
                                 </userDefinedRuntimeAttributes>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="26l-Ja-KsA">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="100" id="AYY-Nq-79y" customClass="RecipeCell" customModule="Pantry" customModuleProvider="target">
@@ -350,14 +347,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0X-Hd-D18">
+                                <rect key="frame" x="237" y="76" width="122" height="30"/>
+                                <state key="normal" title="Ingredient Search"/>
+                                <connections>
+                                    <action selector="searchByIngredients:" destination="0IV-n1-Flo" eventType="touchUpInside" id="oej-5X-2N3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="26l-Ja-KsA" firstAttribute="top" secondItem="Iy3-EX-U0s" secondAttribute="bottom" id="BhZ-nJ-suE"/>
+                            <constraint firstItem="26l-Ja-KsA" firstAttribute="top" secondItem="e0X-Hd-D18" secondAttribute="bottom" constant="8" id="4RN-EX-7tD"/>
+                            <constraint firstItem="DNR-tn-Fkl" firstAttribute="trailing" secondItem="e0X-Hd-D18" secondAttribute="trailing" constant="16" id="6BW-Nr-meb"/>
                             <constraint firstItem="Iy3-EX-U0s" firstAttribute="top" secondItem="DNR-tn-Fkl" secondAttribute="top" id="NeZ-Yj-4Xh"/>
                             <constraint firstItem="Iy3-EX-U0s" firstAttribute="leading" secondItem="DNR-tn-Fkl" secondAttribute="leading" id="RBd-oe-FIc"/>
                             <constraint firstItem="26l-Ja-KsA" firstAttribute="leading" secondItem="DNR-tn-Fkl" secondAttribute="leading" id="b9v-sS-7Mk"/>
                             <constraint firstItem="26l-Ja-KsA" firstAttribute="bottom" secondItem="DNR-tn-Fkl" secondAttribute="bottom" id="iqe-KX-jZi"/>
+                            <constraint firstItem="e0X-Hd-D18" firstAttribute="top" secondItem="Iy3-EX-U0s" secondAttribute="bottom" id="kib-Mj-nf7"/>
                             <constraint firstItem="26l-Ja-KsA" firstAttribute="trailing" secondItem="DNR-tn-Fkl" secondAttribute="trailing" id="q3A-ki-sad"/>
                             <constraint firstItem="Iy3-EX-U0s" firstAttribute="trailing" secondItem="DNR-tn-Fkl" secondAttribute="trailing" id="y4L-aX-TrB"/>
                         </constraints>

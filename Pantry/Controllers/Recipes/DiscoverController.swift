@@ -91,6 +91,7 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
             let alert = UIAlertController(title: "Saved", message: "Recipe has been saved for later use", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            
             APIManager.shared.saveRecipe(recipe: recipe, completion: { (err) in
                 if err == nil {
                     completion(true)
@@ -149,4 +150,31 @@ class DiscoverController: UIViewController,  UITableViewDataSource, UITableViewD
         let vc = segue.destination as! RecipeDetailsController
         vc.selectedRecipe = cell.recipe!
     }
+    
+    @IBAction func searchByIngredients(_ sender: Any) {
+        var url = "http://www.recipepuppy.com/api/?i="
+        
+        if let object = UserDefaults.standard.object(forKey: "ingredients") {
+            var count: Int = 0
+            for(key, _) in object as! [String:[String:Any]]{
+                url += key + ","
+                count+=1
+            }
+            if count == 0 {
+                return
+            }
+            print(url)
+        }
+        
+        APIManager.shared.get(urlString: url) { (searchResults: RecipeSearch) in
+            let recipies = searchResults.results
+            self.recipies = recipies
+            DispatchQueue.main.async {
+                self.table.reloadData()
+                self.table.animate(animation: TableViewAnimation.Cell.left(duration: 0.5))
+            }
+        }
+    }
+    
+    
 }

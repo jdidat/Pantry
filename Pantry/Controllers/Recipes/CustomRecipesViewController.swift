@@ -9,8 +9,9 @@
 import UIKit
 import NightNight
 
-class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var table: UITableView!
     @IBOutlet var myView: UIView!
     
@@ -22,25 +23,37 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         return refreshControl
     }()
     
-    var customRecipes : [[String:Any]] = []
+    var customRecipes : [String: [String:Any]] = [:]
+    var allRecipies : [String: [String:Any]] = [:]
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let keywords = searchText.lowercased()
+        if allRecipies[keywords] != nil {
+            customRecipes[keywords] = allRecipies[keywords]
+        } else {
+            customRecipes = [:]
+        }
+        self.table.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.table.delegate = self
         self.table.dataSource = self
+        self.searchBar.delegate = self
+        
         self.table.addSubview(self.refreshControl)
         self.refreshControl.beginRefreshing()
-        getRecipies { (err) in
-            if let err = err {
-                print(err.localizedDescription)
-                DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
-                    self.table.reloadData()
-                }
+        APIManager.shared.getAllCustomRecipes { (recipes, err) in
+            if err != nil {
+                print("Error loading")
+            }
+            else {
+                self.allRecipies = recipes!
+                self.table.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -75,7 +88,7 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         cell.customRecipeImage.layer.borderColor = UIColor.black.cgColor
         cell.customRecipeImage.layer.cornerRadius = cell.customRecipeImage.frame.height/2
         cell.customRecipeImage.clipsToBounds = true
-        cell.customRecipe = customRecipes[indexPath.row]
+        cell.customRecipe = Array(customRecipes)[indexPath.row].value
         return cell
     }
     
@@ -90,7 +103,7 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func deleteAction(at: IndexPath) -> UIContextualAction {
-        let recipe = self.customRecipes[at.row]
+        let recipe = Array(customRecipes)[at.row].value
         let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
             if let recipeName = recipe["recipeName"] as? String {
                 APIManager.shared.deleteCutomRecipe(recipeName: recipeName, completion: { (error) in
@@ -132,21 +145,7 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     /*Table code end*/
     
     func getRecipies(completion: @escaping (Error?)->()){
-        APIManager.shared.getCustomRecipes { (customRecipes: [[String:Any]]?, err) in
-            if let err = err {
-                switch err {
-                case APIManager.ErrorCodes.notFound:
-                    //Add UI label to tell user to add recipe
-                    break
-                default:
-                    print("Unknown error")
-                }
-                completion(err)
-            } else {
-                self.customRecipes = customRecipes!
-                completion(nil)
-            }
-        }
+        
     }
     
 }

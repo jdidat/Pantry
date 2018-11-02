@@ -274,66 +274,25 @@ class APIManager {
         }
     }
     
-    func removeSavedRecipe(recipe: Recipe, completion:@escaping(Error?)->()) {
-//        getSavedRecipes { (data, err) in
-//            if let data = data {
-//                let newSavedData: [String:Any] = [:]
-//                for recipe in data {
-//                    if recipe.title == recipe.title {continue}
-//                    newSavedData[
-//                        recipe.title : [
-//                        "title": recipe.title,
-//                        "href": recipe.href,
-//                        "ingredients": recipe.ingredients,
-//                        "thumbnail": recipe.thumbnail
-//                        ]
-//                    ]
-//                }
-//                db.collection("saved").document(self.currentUserId).setData(<#T##documentData: [String : Any]##[String : Any]#>)
-//
-//            }
-//            else if err != nil {
-//                completion(err)
-//            }
-//        }
-    }
-    
-    func addIngredient(ingredient: Ingredient, completion:@escaping(Error?)->()){
-        let ingredientTitle = ingredient.title
-        db.collection("ingredients").document(self.currentUserId).setData([
-            ingredientTitle: [
-                "title": ingredient.title
-            ]
-        ], merge:true) { err in
-            if err == nil {
-                completion(nil)
-            } else {
-                completion(err)
-            }
-        }
-        
-    }
-    
-    func getIngredients(completion:@escaping([Ingredient]?, Error?)->()) {
-        db.collection("ingredients").document(self.currentUserId).getDocument { (data, err) in
-            var ingredients: [Ingredient] = []
+    func getAllCustomRecipes(completion: @escaping([String:[String : Any]]?, Error?)->()) {
+        db.collection("customRecipes").getDocuments { (data, err) in
+            var customRecipes: [String:[String : Any]] = [:]
             if err != nil  {
                 completion(nil, err)
-            } else if let data = data?.data() {
-                for (_, ingredientValues) in data {
-                    let dataDictionary = ingredientValues as! [String:Any]
-                    ingredients.append(Ingredient.init(title: dataDictionary["title"] as! String))
+            } else if let data = data {
+                for document in data.documents {
+                    for (_, recipeValues) in document.data() {
+                        var dataString = recipeValues as! [String : Any]
+                        customRecipes[(dataString["recipeName"] as! String).lowercased()] = dataString
+                    }
                 }
-                completion(ingredients, nil)
+                completion(customRecipes, nil)
             } else {
                 completion(nil, ErrorCodes.notFound)
             }
         }
     }
     
-    func changeIngredientCount(ingredient: Ingredient, increase: Bool, completion:@escaping(Error?)->()) {
-//        db.collection(<#T##collectionPath: String##String#>)
-    }
     
     func validateUser() -> Bool {
         return self.currentUserId.count > 0

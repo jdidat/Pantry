@@ -13,7 +13,15 @@ import AlamofireImage
 import Cosmos
 import NightNight
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var recipeNumber: UILabel!
@@ -25,9 +33,70 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var myTableView: UITableView!
     
+    
+    var customRecipes: [[String:Any]] = []
+    
     @IBAction func editProfile(_ sender: Any) {
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return customRecipes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customRecipeCell", for: indexPath) as! CustomRecipeCell
+        cell.cardView.layer.masksToBounds = false
+        cell.cardView.layer.cornerRadius = 20
+        cell.cardView.clipsToBounds = true
+        cell.customRecipeImage.image = UIImage(named: "default")
+        cell.customRecipeImage.layer.borderWidth = 1
+        cell.customRecipeImage.layer.masksToBounds = false
+        cell.customRecipeImage.layer.borderColor = UIColor.black.cgColor
+        cell.customRecipeImage.layer.cornerRadius = cell.customRecipeImage.frame.height/2
+        cell.customRecipeImage.clipsToBounds = true
+        cell.customRecipe = customRecipes[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return UISwipeActionsConfiguration(actions: [])
+    }
+    
+    func deleteAction(at: IndexPath) -> UIContextualAction {
+        let recipe = self.customRecipes[at.row]
+        let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in
+            if let recipeName = recipe["recipeName"] as? String {
+                APIManager.shared.deleteCutomRecipe(recipeName: recipeName, completion: { (error) in
+                    if error == nil {
+                        let alert = UIAlertController(title: "Deleted", message: "Recipe has been deleted", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.getRecipies { (err) in
+                            if let err = err {
+                                print(err.localizedDescription)
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.myTableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                    completion(true)
+                })
+            }
+        }
+        action.backgroundColor = UIColor.red
+        return action
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -93,8 +162,57 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view.
         profilePicture.addGestureRecognizer(tapGestureRecognizer)
         
+        self.myTableView.delegate = self
+        self.myTableView.dataSource = self
+        self.myTableView.addSubview(self.refreshControl)
+        self.refreshControl.beginRefreshing()
+        getRecipies { (err) in
+            if let err = err {
+                print(err.localizedDescription)
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    self.myTableView.reloadData()
+                }
+            }
+        }
     }
 
+    func getRecipies(completion: @escaping (Error?)->()){
+        APIManager.shared.getCustomRecipes { (customRecipes: [[String:Any]]?, err) in
+            if let err = err {
+                switch err {
+                case APIManager.ErrorCodes.notFound:
+                    //Add UI label to tell user to add recipe
+                    break
+                default:
+                    print("Unknown error")
+                }
+                completion(err)
+            } else {
+                self.customRecipes = customRecipes!
+                self.recipeNumber.text = String(self.customRecipes.count)
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        getRecipies { (err) in
+            if err == nil {
+                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
+                    self.myTableView.reloadData()
+                }
+            }
+        }
+        
+    }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         let imagePicker = UIImagePickerController()
