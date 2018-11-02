@@ -31,9 +31,9 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
         self.refreshControl.beginRefreshing()
         getSaved { (err) in
             if err == nil {
-                self.refreshControl.endRefreshing()
                 self.tableView.reloadData()
             }
+            self.refreshControl.endRefreshing()
         }
     }
     

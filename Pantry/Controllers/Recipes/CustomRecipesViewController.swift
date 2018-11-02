@@ -53,8 +53,8 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
             else {
                 self.allRecipies = recipes!
                 self.table.reloadData()
-                self.refreshControl.endRefreshing()
             }
+            self.refreshControl.endRefreshing()
         }
     }
     
