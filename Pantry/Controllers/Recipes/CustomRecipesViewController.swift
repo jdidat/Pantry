@@ -15,14 +15,6 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var table: UITableView!
     @IBOutlet var myView: UIView!
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.red
-        
-        return refreshControl
-    }()
-    
     var customRecipes : [String: [String:Any]] = [:]
     var allRecipies : [String: [String:Any]] = [:]
     
@@ -129,18 +121,6 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         return action
     }
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
-        getRecipies { (err) in
-            if err == nil {
-                DispatchQueue.main.async {
-                    self.table.reloadData()
-                }
-            }
-            self.refreshControl.endRefreshing()
-        }
-        
-    }
     
     /*Table code end*/
     
