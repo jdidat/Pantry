@@ -156,7 +156,7 @@ class APIManager {
             self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/\(recipeName)", completion: { (error, url) in
                 if error == nil {
                     self.db.collection("customRecipes").document(self.currentUserId).setData([
-                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!), "likes": 0]
+                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!), "likes": 0, "ownerId": self.currentUser?.uid]
                     ], merge: true) {err in
                         if let err = err {
                             completion(err)
@@ -171,7 +171,7 @@ class APIManager {
             })
         } else {
             db.collection("customRecipes").document(self.currentUserId).setData([
-                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil, "likes": 0]
+                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil, "likes": 0, "ownerId": self.currentUser?.uid]
             ], merge: true) {err in
                 if let err = err {
                     completion(err)
@@ -274,16 +274,16 @@ class APIManager {
         }
     }
     
-    func getAllCustomRecipes(completion: @escaping([String:[String : Any]]?, Error?)->()) {
+    func getAllCustomRecipes(completion: @escaping([[String : Any]]?, Error?)->()) {
         db.collection("customRecipes").getDocuments { (data, err) in
-            var customRecipes: [String:[String : Any]] = [:]
+            var customRecipes: [[String : Any]] = []
             if err != nil  {
                 completion(nil, err)
             } else if let data = data {
                 for document in data.documents {
                     for (_, recipeValues) in document.data() {
-                        var dataString = recipeValues as! [String : Any]
-                        customRecipes[(dataString["recipeName"] as! String).lowercased()] = dataString
+                        let dataString = recipeValues as! [String : Any]
+                        customRecipes.append(dataString)
                     }
                 }
                 completion(customRecipes, nil)
@@ -291,6 +291,30 @@ class APIManager {
                 completion(nil, ErrorCodes.notFound)
             }
         }
+    }
+    
+    func updateVotes(recipe: [String:Any], isLike: Bool, completion: @escaping(Error?)->()) {
+        let recipeName = recipe["recipeName"] as! String
+        let recipeOwner = recipe["ownerId"] as! String
+        let recipeLikes = recipe["likes"] as! Int
+        db.collection("customRecipes").document(recipeOwner).getDocument(completion: { (data, err) in
+            if let data = data {
+                let values = data.data()
+                if let values = values {
+                    for(key, _) in values {
+                        if key == recipeName {
+                            var adder = 0
+                            if isLike {
+                                adder = 1
+                            } else {
+                                adder = -1
+                            }
+                            self.db.collection("customRecipes").document(recipeOwner).setData([recipeName: ["likes": recipeLikes + adder]], merge: true)
+                        }
+                    }
+                }
+            }
+        })
     }
     
     

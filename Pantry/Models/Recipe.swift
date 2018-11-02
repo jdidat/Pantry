@@ -17,7 +17,7 @@ struct Recipe: Decodable {
         self.title = dictionary["title"] as! String
         self.href = dictionary["href"] as! String
         self.ingredients = dictionary["ingredients"] as! String
-        self.thumbnail = dictionary["thumbnail"] as! String
+        self.thumbnail = dictionary["thumbnail"] as? String ?? ""
     }
 }
 

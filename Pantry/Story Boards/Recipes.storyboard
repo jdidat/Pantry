@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,7 +64,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8C0-88-CGV">
-                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="customRecipeCell" rowHeight="100" id="mhL-qb-uT4" customClass="CustomRecipeCell" customModule="Pantry" customModuleProvider="target">
@@ -162,16 +162,25 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-bx-dPu">
+                                <rect key="frame" x="274" y="76" width="85" height="30"/>
+                                <state key="normal" title="Sort by likes"/>
+                                <connections>
+                                    <action selector="sortDictionary:" destination="l3q-on-Gy0" eventType="touchUpInside" id="KBQ-cd-vTb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="ABn-1K-uKf"/>
+                            <constraint firstItem="Vn1-bx-dPu" firstAttribute="top" secondItem="LdB-vg-aaz" secondAttribute="bottom" id="AzI-4B-7wg"/>
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" id="C1e-mh-yMf"/>
-                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="LdB-vg-aaz" secondAttribute="bottom" id="DfF-7t-JXJ"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="TKz-NR-t3n"/>
+                            <constraint firstItem="w3V-9G-Yz1" firstAttribute="trailing" secondItem="Vn1-bx-dPu" secondAttribute="trailing" constant="16" id="agd-hT-XGl"/>
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="eWA-Gn-p5e"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="j5G-e9-gNU"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="bottom" secondItem="w3V-9G-Yz1" secondAttribute="bottom" id="tPh-9j-Bgg"/>
+                            <constraint firstItem="8C0-88-CGV" firstAttribute="top" secondItem="Vn1-bx-dPu" secondAttribute="bottom" constant="8" id="wCR-uG-Q2w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="w3V-9G-Yz1"/>
                         <userDefinedRuntimeAttributes>
@@ -569,9 +578,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Atc-oX-KNk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Atc-oX-KNk">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="recipeCell" rowHeight="100" id="dvA-w4-Yj0" customClass="RecipeCell" customModule="Pantry" customModuleProvider="target">
@@ -637,12 +645,22 @@
                                             <outlet property="cardView" destination="h3c-v9-yCp" id="eiy-rX-HVy"/>
                                             <outlet property="recipeImage" destination="PRa-hM-s5H" id="slA-1r-LMg"/>
                                             <outlet property="recipeTitle" destination="LRS-h1-na3" id="WKA-SZ-f0K"/>
+                                            <segue destination="YjZ-3R-YYm" kind="presentation" identifier="recipeDetailsSegue" trigger="accessoryAction" id="BbF-hd-kaX">
+                                                <segue key="commit" inheritsFrom="parent" id="N1G-8y-yhh"/>
+                                                <segue key="preview" inheritsFrom="commit" id="MRU-g9-0o3"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Atc-oX-KNk" firstAttribute="leading" secondItem="J6Z-Bu-Ioz" secondAttribute="leading" id="0yK-xw-eWA"/>
+                            <constraint firstItem="Atc-oX-KNk" firstAttribute="bottom" secondItem="J6Z-Bu-Ioz" secondAttribute="bottom" id="79d-fe-54V"/>
+                            <constraint firstItem="Atc-oX-KNk" firstAttribute="top" secondItem="J6Z-Bu-Ioz" secondAttribute="top" id="D4q-xA-UDW"/>
+                            <constraint firstItem="Atc-oX-KNk" firstAttribute="trailing" secondItem="J6Z-Bu-Ioz" secondAttribute="trailing" id="rQU-vt-oZU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="J6Z-Bu-Ioz"/>
                     </view>
                     <connections>
@@ -659,6 +677,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qkv-oE-mnc"/>
-        <segue reference="rTs-Cz-lPf"/>
+        <segue reference="BbF-hd-kaX"/>
     </inferredMetricsTieBreakers>
 </document>

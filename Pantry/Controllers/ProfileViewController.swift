@@ -66,10 +66,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return UISwipeActionsConfiguration(actions: [])
-    }
-    
     func deleteAction(at: IndexPath) -> UIContextualAction {
         let recipe = self.customRecipes[at.row]
         let action = UIContextualAction(style: .normal, title: "Delete") { (action, view, completion) in

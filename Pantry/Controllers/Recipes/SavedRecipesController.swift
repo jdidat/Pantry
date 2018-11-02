@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NightNight
 
 class SavedRecipesController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -34,6 +35,18 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
                 self.tableView.reloadData()
             }
             self.refreshControl.endRefreshing()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        if (NightNight.theme == .night) {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+            tableView.backgroundColor = UIColor.black
+        }
+        else {
+            navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+            tableView.backgroundColor = UIColor.white
         }
     }
     

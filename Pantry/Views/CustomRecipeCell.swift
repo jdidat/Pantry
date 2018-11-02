@@ -42,11 +42,23 @@ class CustomRecipeCell: UITableViewCell {
     
     
     @IBAction func like(_ sender: Any) {
-        print("like")
+        if let customRecipe = customRecipe {
+            APIManager.shared.updateVotes(recipe: customRecipe, isLike: true) { (err) in
+                if err != nil {
+                    print("Didn't work")
+                }
+            }
+        }
     }
     
     @IBAction func dislike(_ sender: Any) {
-        print("dislike")
+        if let customRecipe = customRecipe {
+            APIManager.shared.updateVotes(recipe: customRecipe, isLike: false) { (err) in
+                if err != nil {
+                    print("Didn't work")
+                }
+            }
+        }
     }
     
     override func awakeFromNib() {
