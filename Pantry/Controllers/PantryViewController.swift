@@ -37,7 +37,7 @@ class PantryViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewWillDisappear(_ animated: Bool) {
         if initialState != ingredients {
-            let alert = UIAlertController(title: "Save?", message: "You have made changes to your endgredients do you want to save?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Save?", message: "You have made changes to your indgredients.\n Do you want to save?", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {_ in
                 var serializedData:[String:[String:Any]] = [:]
