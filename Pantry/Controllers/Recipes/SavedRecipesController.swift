@@ -95,10 +95,10 @@ class SavedRecipesController: UIViewController, UITableViewDataSource, UITableVi
         getSaved { (err) in
             if err == nil {
                 DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
                     self.tableView.reloadData()
                 }
             }
+            self.refreshControl.endRefreshing()
         }
     }
 

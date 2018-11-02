@@ -134,10 +134,10 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         getRecipies { (err) in
             if err == nil {
                 DispatchQueue.main.async {
-                    self.refreshControl.endRefreshing()
                     self.table.reloadData()
                 }
             }
+            self.refreshControl.endRefreshing()
         }
         
     }
