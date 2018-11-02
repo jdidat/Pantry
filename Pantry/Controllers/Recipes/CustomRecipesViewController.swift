@@ -36,8 +36,6 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         self.table.dataSource = self
         self.searchBar.delegate = self
         
-        self.table.addSubview(self.refreshControl)
-        self.refreshControl.beginRefreshing()
         APIManager.shared.getAllCustomRecipes { (recipes, err) in
             if err != nil {
                 print("Error loading")
@@ -46,7 +44,6 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
                 self.allRecipies = recipes!
                 self.table.reloadData()
             }
-            self.refreshControl.endRefreshing()
         }
     }
     
