@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iJO-xn-ayt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iJO-xn-ayt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -447,58 +447,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMh-KF-7aZ">
-                                <rect key="frame" x="67" y="317" width="45" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLI-dG-583">
-                                <rect key="frame" x="67" y="384" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKB-cs-Sxz">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hKB-cs-Sxz">
                                 <rect key="frame" x="59" y="346" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="TRP-u1-6bo"/>
+                                    <constraint firstAttribute="height" constant="30" id="Ti5-5q-2Tg"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nw-Ul-b1C">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Description" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8nw-Ul-b1C">
                                 <rect key="frame" x="59" y="413" width="240" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="9Tb-aL-tyO"/>
+                                    <constraint firstAttribute="height" constant="150" id="NNu-dL-Lzb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwF-Jl-iaH">
-                                <rect key="frame" x="139" y="562" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create Recipe"/>
-                                <connections>
-                                    <action selector="createRecipe:" destination="jzI-IS-iQc" eventType="touchUpInside" id="tta-cd-1Hw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-FG-1iX">
-                                <rect key="frame" x="320" y="36" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-FG-1iX" customClass="FlatButton" customModule="SwiftyButton">
+                                <rect key="frame" x="16" y="36" width="72" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="jWy-LW-U1U"/>
+                                    <constraint firstAttribute="height" constant="30" id="ske-U2-4Xs"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="0.4268160761" blue="0.44353140600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="close:" destination="jzI-IS-iQc" eventType="touchUpInside" id="Dl0-bV-eQd"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Z-Xm-QxG">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q1Z-Xm-QxG">
                                 <rect key="frame" x="59" y="90" width="240" height="219"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwF-Jl-iaH" customClass="FlatButton" customModule="SwiftyButton">
+                                <rect key="frame" x="139" y="582" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="BEZ-ub-3NY"/>
+                                    <constraint firstAttribute="height" constant="30" id="Zrc-cz-5cQ"/>
+                                </constraints>
+                                <state key="normal" title="Create Recipe">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="1" green="0.4268160761" blue="0.44353140600000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createRecipe:" destination="jzI-IS-iQc" eventType="touchUpInside" id="tta-cd-1Hw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Zgf-h9-0rx" firstAttribute="trailing" secondItem="PnO-FG-1iX" secondAttribute="trailing" constant="16" id="OPc-4e-1oK"/>
+                            <constraint firstItem="hKB-cs-Sxz" firstAttribute="top" secondItem="Q1Z-Xm-QxG" secondAttribute="bottom" constant="37" id="8Qp-H3-JY7"/>
+                            <constraint firstItem="hKB-cs-Sxz" firstAttribute="leading" secondItem="Zgf-h9-0rx" secondAttribute="leading" constant="59" id="9gi-f6-bv4"/>
+                            <constraint firstItem="PnO-FG-1iX" firstAttribute="leading" secondItem="Zgf-h9-0rx" secondAttribute="leading" constant="16" id="JPs-te-LT0"/>
+                            <constraint firstItem="8nw-Ul-b1C" firstAttribute="top" secondItem="hKB-cs-Sxz" secondAttribute="bottom" constant="37" id="JQE-F6-zCT"/>
+                            <constraint firstItem="fwF-Jl-iaH" firstAttribute="leading" secondItem="Zgf-h9-0rx" secondAttribute="leading" constant="139" id="Kdz-wp-HLO"/>
+                            <constraint firstItem="Zgf-h9-0rx" firstAttribute="bottom" secondItem="8nw-Ul-b1C" secondAttribute="bottom" constant="104" id="PJg-JI-gOv"/>
+                            <constraint firstItem="Zgf-h9-0rx" firstAttribute="trailing" secondItem="Q1Z-Xm-QxG" secondAttribute="trailing" constant="76" id="ZSR-Bx-zd7"/>
+                            <constraint firstItem="Q1Z-Xm-QxG" firstAttribute="leading" secondItem="Zgf-h9-0rx" secondAttribute="leading" constant="59" id="ciV-N7-nxj"/>
+                            <constraint firstItem="Q1Z-Xm-QxG" firstAttribute="top" secondItem="PnO-FG-1iX" secondAttribute="bottom" constant="24" id="fc5-SZ-yNm"/>
+                            <constraint firstItem="8nw-Ul-b1C" firstAttribute="leading" secondItem="Zgf-h9-0rx" secondAttribute="leading" constant="59" id="i5t-OA-PpN"/>
+                            <constraint firstItem="Q1Z-Xm-QxG" firstAttribute="top" secondItem="PnO-FG-1iX" secondAttribute="bottom" constant="24" id="jzG-ur-CL1"/>
+                            <constraint firstItem="Zgf-h9-0rx" firstAttribute="bottom" secondItem="fwF-Jl-iaH" secondAttribute="bottom" constant="55" id="wdJ-zn-Djd"/>
                             <constraint firstItem="PnO-FG-1iX" firstAttribute="top" secondItem="Zgf-h9-0rx" secondAttribute="top" constant="16" id="xo0-K5-3rn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zgf-h9-0rx"/>
@@ -511,7 +532,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKQ-79-U5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1119" y="1048"/>
+            <point key="canvasLocation" x="1117.5999999999999" y="1047.5262368815593"/>
         </scene>
     </scenes>
 </document>
