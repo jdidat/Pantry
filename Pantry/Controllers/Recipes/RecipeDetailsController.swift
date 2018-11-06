@@ -20,6 +20,8 @@ class RecipeDetailsController: UIViewController {
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var ingredientsDataLabel: UILabel!
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
         if (NightNight.theme == .night) {
@@ -34,11 +36,42 @@ class RecipeDetailsController: UIViewController {
         }
     }
     
+    func contains(string: String, substring: String) -> Bool {
+        return string.lowercased().range(of:substring.lowercased()) != nil
+    }
+    
+    func generateIngredientsUI() {
+        let object = UserDefaults.standard.object(forKey: "ingredients");
+        if let recipe = selectedRecipe {
+            let ingredientsArray = recipe.ingredients.components(separatedBy: ", ")
+            var yPos = 300
+            for string in ingredientsArray {
+                let rect = CGRect(x: 40, y: yPos, width: 200, height: 21)
+                let label = UILabel(frame: rect)
+                label.text = string
+                if let object = object as? [String:[String:Any]] {
+                    let keys = object.keys
+                    for key in keys {
+                        if contains(string: string, substring: key) {
+                            label.textColor = UIColor.green
+                            break
+                        } else {
+                            label.textColor = UIColor.white
+                        }
+                    }
+                } else {
+                    label.textColor = UIColor.white
+                }
+                self.view.addSubview(label)
+                yPos = yPos+21;
+            }
+            recipeIngredients.text = ""
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let recipe = selectedRecipe {
-            recipeIngredients.text = recipe.ingredients
-        }
+        self.generateIngredientsUI()
         if let url = URL(string: (selectedRecipe?.thumbnail)!) {
             let urlRequest = URLRequest(url: url)
             URLCache.shared.removeCachedResponse(for: urlRequest)
