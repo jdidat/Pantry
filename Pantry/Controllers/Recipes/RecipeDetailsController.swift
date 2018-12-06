@@ -44,11 +44,13 @@ class RecipeDetailsController: UIViewController {
         let object = UserDefaults.standard.object(forKey: "ingredients");
         if let recipe = selectedRecipe {
             let ingredientsArray = recipe.ingredients.components(separatedBy: ", ")
-            var yPos = 300
+            var yPos = 325
+            var counter = 1
             for string in ingredientsArray {
                 let rect = CGRect(x: 40, y: yPos, width: 200, height: 21)
                 let label = UILabel(frame: rect)
-                label.text = string
+                label.text = "\(counter). \(string)"
+                counter += 1
                 if let object = object as? [String:[String:Any]] {
                     let keys = object.keys
                     for key in keys {
@@ -56,11 +58,11 @@ class RecipeDetailsController: UIViewController {
                             label.textColor = UIColor.green
                             break
                         } else {
-                            label.textColor = UIColor.white
+                            label.textColor = UIColor.red
                         }
                     }
                 } else {
-                    label.textColor = UIColor.white
+                    label.textColor = UIColor.red
                 }
                 self.view.addSubview(label)
                 yPos = yPos+21;

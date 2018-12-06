@@ -42,6 +42,7 @@
 		A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */; };
 		A5C6095C21859EBB00A85623 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6095B21859EBB00A85623 /* Ingredient.swift */; };
 		A5C6095E21859FD000A85623 /* IngredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C6095D21859FD000A85623 /* IngredientCell.swift */; };
+		A5EA3DB921B8ACD000E6516B /* EditCustomRecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA3DB821B8ACD000E6516B /* EditCustomRecipeController.swift */; };
 		D87537322161739C000DF5F3 /* Recipes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D87537312161739C000DF5F3 /* Recipes.storyboard */; };
 		D875373421617485000DF5F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D875373321617485000DF5F3 /* Profile.storyboard */; };
 		D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87537372161784E000DF5F3 /* ProfileViewController.swift */; };
@@ -109,6 +110,7 @@
 		A5C22AD02163369600178AB1 /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
 		A5C6095B21859EBB00A85623 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		A5C6095D21859FD000A85623 /* IngredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientCell.swift; sourceTree = "<group>"; };
+		A5EA3DB821B8ACD000E6516B /* EditCustomRecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCustomRecipeController.swift; sourceTree = "<group>"; };
 		D87537312161739C000DF5F3 /* Recipes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recipes.storyboard; sourceTree = "<group>"; };
 		D875373321617485000DF5F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		D87537372161784E000DF5F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				A513FE3E216471D400FE20C0 /* SavedRecipesController.swift */,
 				A513FE402164771000FE20C0 /* CreateRecipeController.swift */,
 				A513FE4221647F3700FE20C0 /* RecipeDetailsController.swift */,
+				A5EA3DB821B8ACD000E6516B /* EditCustomRecipeController.swift */,
 			);
 			path = Recipes;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				A513FE3D2164555600FE20C0 /* CustomRecipeCell.swift in Sources */,
 				D87537382161784E000DF5F3 /* ProfileViewController.swift in Sources */,
 				A53C8EB42162FBE300C7792F /* APIManager.swift in Sources */,
+				A5EA3DB921B8ACD000E6516B /* EditCustomRecipeController.swift in Sources */,
 				A513FE3721643FDF00FE20C0 /* CustomRecipesViewController.swift in Sources */,
 				A5C6095E21859FD000A85623 /* IngredientCell.swift in Sources */,
 				A593A220216336440068107B /* LoginController.swift in Sources */,
