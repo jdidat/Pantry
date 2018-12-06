@@ -156,7 +156,7 @@ class APIManager {
             self.uploadImage(image: imageData!, path: "images/\(self.currentUserId)/\(recipeName)", completion: { (error, url) in
                 if error == nil {
                     self.db.collection("customRecipes").document(self.currentUserId).setData([
-                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!), "likes": 0, "ownerId": self.currentUser?.uid]
+                        recipeName: ["recipeName": recipeName, "description": description, "imageURL": String(describing: url!), "likes": 0, "ownerId": self.currentUser?.uid, "views": 0]
                     ], merge: true) {err in
                         if let err = err {
                             completion(err)
@@ -171,7 +171,7 @@ class APIManager {
             })
         } else {
             db.collection("customRecipes").document(self.currentUserId).setData([
-                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil, "likes": 0, "ownerId": self.currentUser?.uid]
+                recipeName: ["recipeName": recipeName, "description": description, "imageURL": nil, "likes": 0, "ownerId": self.currentUser?.uid, "views": 0]
             ], merge: true) {err in
                 if let err = err {
                     completion(err)
@@ -318,6 +318,7 @@ class APIManager {
             }
         })
     }
+    
     func deleteSavedRecipe(recipeName: String, completion: @escaping(Error?)->()) {
         db.collection("saved").document(currentUserId).updateData([
             recipeName: FieldValue.delete(),
@@ -330,6 +331,28 @@ class APIManager {
         }
     }
     
+    func editCustomRecipe(oldRecipeName: String, newRecipeName: String, description: String, completion: @escaping (Error?) -> ()) {
+        db.collection("customRecipes").document(currentUserId).getDocument { (data, err) in
+            if err != nil {
+                print("ERROR")
+                completion(err)
+            }
+            var customRecipes: [[String : Any]] = []
+            if let data = data {
+                let values = data.data()
+                for(key, value) in values! {
+                    if key == oldRecipeName {
+                        continue
+                    }
+                    customRecipes.append([key: value])
+                }
+                customRecipes.append([newRecipeName: ["recipeName": newRecipeName, "description": description, "likes": 0, "ownerId": self.currentUserId, "imageURL": nil]])
+                print(customRecipes)
+                completion(nil)
+            }
+        }
+    }
+
     func validateUser() -> Bool {
         return self.currentUserId.count > 0
     }
