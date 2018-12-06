@@ -17,11 +17,10 @@ class EditCustomRecipeController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var customRecipe: [String:Any] = [:]
-    var originalRecipeName : String = ""
-    
     @IBAction func saveChanges(_ sender: UIButton) {
-        APIManager.shared.editCustomRecipe(oldRecipeName: originalRecipeName, newRecipeName: titleTextField.text!, description: descriptionTextField.text!) { (error) in
+        APIManager.shared.editCustomRecipe(customRecipe: customRecipe, newRecipeName: titleTextField.text!, description: descriptionTextField.text!) { (error) in
             if error != nil {
+                print(error)
             }
             
         }
@@ -47,7 +46,6 @@ class EditCustomRecipeController: UIViewController {
         super.viewDidLoad()
         if let recipeName = customRecipe["recipeName"] as? String {
             titleTextField.text! = recipeName
-            originalRecipeName = recipeName
         }
         if let description = customRecipe["description"] as? String {
             descriptionTextField.text! = description

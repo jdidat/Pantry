@@ -331,26 +331,33 @@ class APIManager {
         }
     }
     
-    func editCustomRecipe(oldRecipeName: String, newRecipeName: String, description: String, completion: @escaping (Error?) -> ()) {
-        db.collection("customRecipes").document(currentUserId).getDocument { (data, err) in
-            if err != nil {
-                print("ERROR")
-                completion(err)
-            }
-            var customRecipes: [[String : Any]] = []
-            if let data = data {
-                let values = data.data()
-                for(key, value) in values! {
-                    if key == oldRecipeName {
-                        continue
+    func editCustomRecipe(customRecipe: [String:Any], newRecipeName: String, description: String, completion: @escaping (Error?) -> ()) {
+        let oldRecipeName = customRecipe["recipeName"] as! String
+        db.collection("customRecipes").document(currentUserId).updateData([
+            oldRecipeName: FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    completion(err)
+                } else {
+                    let oldImage = customRecipe["imageURL"] as? String
+                    let oldLikes = customRecipe["likes"] as! Int
+                    let oldViews = customRecipe["views"] as! Int
+                    self.db.collection("customRecipes").document(self.currentUserId).setData([
+                        newRecipeName: ["recipeName": newRecipeName, "description": description, "imageURL": oldImage, "likes": oldLikes, "ownerId": self.currentUser?.uid, "views": oldViews]
+                    ], merge: true) {err in
+                        if let err = err {
+                            completion(err)
+                        }
+                        else {
+                            completion(nil)
+                        }
                     }
-                    customRecipes.append([key: value])
                 }
-                customRecipes.append([newRecipeName: ["recipeName": newRecipeName, "description": description, "likes": 0, "ownerId": self.currentUserId, "imageURL": nil]])
-                print(customRecipes)
-                completion(nil)
-            }
         }
+    }
+    
+    func updateViewsCount(completion: @escaping(Error?) -> ()){
+        
     }
 
     func validateUser() -> Bool {
