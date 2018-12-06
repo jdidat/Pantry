@@ -251,4 +251,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editCustomRecipeSegue" {
+            if let destinationVC = segue.destination as? EditCustomRecipeController {
+                let selectedRecipe = customRecipes[(myTableView.indexPathForSelectedRow?.row)!]
+                destinationVC.customRecipe = selectedRecipe
+            }
+        }
+    }
 }

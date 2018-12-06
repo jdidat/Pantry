@@ -136,7 +136,7 @@
                                             <outlet property="customRecipeImage" destination="p2V-FE-9Jy" id="hzA-6t-5LG"/>
                                             <outlet property="customRecipeLikes" destination="Gc4-of-ZIV" id="G17-5P-WQG"/>
                                             <outlet property="customRecipeTitle" destination="g3S-eh-Lrd" id="G5l-C5-INt"/>
-                                            <segue destination="ne6-u4-6Da" kind="show" identifier="editCustomRecipeSegue" id="bmm-QN-K87"/>
+                                            <segue destination="ne6-u4-6Da" kind="show" identifier="editCustomRecipeSegue" id="Avx-F7-Ekz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

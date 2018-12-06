@@ -16,6 +16,7 @@ class EditCustomRecipeController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var customRecipe: [String:Any] = [:]
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -35,7 +36,11 @@ class EditCustomRecipeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let recipeName = customRecipe["recipeName"] as? String {
+            titleTextField.text! = recipeName
+        }
+        if let description = customRecipe["description"] as? String {
+            descriptionTextField.text! = description
+        }
     }
 }
