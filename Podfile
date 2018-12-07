@@ -18,6 +18,7 @@ target 'Pantry' do
   pod 'TableFlip'
   pod 'Cosmos', '~> 17.0'
   pod 'NightNight'
+  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
 
   target 'PantryTests' do

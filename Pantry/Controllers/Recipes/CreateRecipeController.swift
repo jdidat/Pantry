@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class CreateRecipeController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -16,6 +17,8 @@ class CreateRecipeController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipeDescriptionField.textAlignment = .left
+        recipeDescriptionField.contentMode = .top
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         recipeImage.isUserInteractionEnabled = true
         recipeImage.addGestureRecognizer(tapGestureRecognizer)
