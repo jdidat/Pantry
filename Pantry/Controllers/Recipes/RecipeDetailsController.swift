@@ -46,16 +46,24 @@ class RecipeDetailsController: UIViewController {
             let ingredientsArray = recipe.ingredients.components(separatedBy: ", ")
             var yPos = 325
             var counter = 1
+
+            
             for string in ingredientsArray {
                 let rect = CGRect(x: 40, y: yPos, width: 200, height: 21)
                 let label = UILabel(frame: rect)
                 label.text = "\(counter). \(string)"
+                label.font = label.font.withSize(20)
                 counter += 1
                 if let object = object as? [String:[String:Any]] {
                     let keys = object.keys
                     for key in keys {
                         if contains(string: string, substring: key) {
-                            label.textColor = UIColor.green
+                            
+                            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: label.text!)
+                            attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+                            attributeString.addAttribute(NSAttributedStringKey.strikethroughColor, value: UIColor.white, range: NSMakeRange(0, attributeString.length))
+                            label.attributedText = attributeString
+                            label.textColor = UIColor(hue: 142/360, saturation: 100/100, brightness: 70/100, alpha: 1.0) /* #00b241 */
                             break
                         } else {
                             label.textColor = UIColor.red
