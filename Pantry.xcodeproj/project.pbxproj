@@ -12,6 +12,7 @@
 		198D14DC218B7234007E027C /* testIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D14DB218B7233007E027C /* testIngredients.swift */; };
 		198D14DE218C017A007E027C /* testPantryContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198D14DD218C017A007E027C /* testPantryContents.swift */; };
 		19A66B67214EF86400F087F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19A66B66214EF86400F087F9 /* GoogleService-Info.plist */; };
+		19E0F03721BA35EC00AFD56A /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E0F03621BA35EC00AFD56A /* ModalViewController.swift */; };
 		566191B23932BD1C7D364A3B /* Pods_PantryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */; };
 		7190445F3C93CAD088BED387 /* Pods_PantryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7081036F3E1A3AA6829B9DC7 /* Pods_PantryTests.framework */; };
 		7C6A67CC2166D89A00DFBBAC /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6A67CB2166D89A00DFBBAC /* TabViewController.swift */; };
@@ -72,6 +73,7 @@
 		198D14DB218B7233007E027C /* testIngredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testIngredients.swift; sourceTree = "<group>"; };
 		198D14DD218C017A007E027C /* testPantryContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testPantryContents.swift; sourceTree = "<group>"; };
 		19A66B66214EF86400F087F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		19E0F03621BA35EC00AFD56A /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		249CC8874FB921CC94D3D6F8 /* Pods-PantryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PantryTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PantryTests/Pods-PantryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6EBBF268E4060135D5F142BB /* Pods_PantryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PantryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7081036F3E1A3AA6829B9DC7 /* Pods_PantryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PantryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -273,6 +275,7 @@
 				A513FE33216439F300FE20C0 /* PantryViewController.swift */,
 				A513FE442164848500FE20C0 /* WebViewController.swift */,
 				7C6A67CB2166D89A00DFBBAC /* TabViewController.swift */,
+				19E0F03621BA35EC00AFD56A /* ModalViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				A593A220216336440068107B /* LoginController.swift in Sources */,
 				7C6A67CC2166D89A00DFBBAC /* TabViewController.swift in Sources */,
 				A513FE34216439F300FE20C0 /* PantryViewController.swift in Sources */,
+				19E0F03721BA35EC00AFD56A /* ModalViewController.swift in Sources */,
 				A575EC822161C05A008BECEF /* DiscoverController.swift in Sources */,
 				A5C6095C21859EBB00A85623 /* Ingredient.swift in Sources */,
 				A5C22AD12163369600178AB1 /* ProfileSettingsController.swift in Sources */,

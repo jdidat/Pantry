@@ -11,6 +11,7 @@ import FirebaseAuth
 import NightNight
 import SwiftyButton
 import ACFloatingTextfield_Objc
+
 class ProfileSettingsViewController: UIViewController {
     
     @IBOutlet weak var darkModeLabel: UILabel!
@@ -18,7 +19,6 @@ class ProfileSettingsViewController: UIViewController {
     @IBOutlet weak var darkModeButton: UISwitch!
     @IBOutlet weak var newPassword: ACFloatingTextField!
     @IBOutlet weak var confirmNewPassword: ACFloatingTextField!
-    @IBOutlet weak var newUsername: ACFloatingTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,29 +114,7 @@ class ProfileSettingsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
-    
-    @IBAction func changeUsername(_ sender: FlatButton) {
-        if let newUsername = newUsername.text {
-            let alert = UIAlertController(title: "Change username", message: "Are you sure want to change your username?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                APIManager.shared.updateUserEntry(entry: "username", value: newUsername, completion: { (error) in
-                    if let error = error {
-                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Success", message: "Username is now updated", preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                })
-            }))
-            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
-        } else {
-            
-        }
-    }
+
     
     func checkPassword() ->  Bool {
         if let password = newPassword.text {
