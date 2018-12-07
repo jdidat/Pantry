@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SwiftyButton
 
 class IngredientCell: UITableViewCell {
     
     @IBOutlet weak var ingredientTitle: UILabel!
     @IBOutlet weak var ingredientCounter: UILabel!
+    @IBOutlet weak var minusButton: FlatButton!
+    @IBOutlet weak var plusButton: FlatButton!
     
     var ingredientCount: Int = 0
     
@@ -28,8 +31,13 @@ class IngredientCell: UITableViewCell {
         // Initialization code
     }
 
+    func viewDidLoad(){
+        minusButton.cornerRadius = 15
+        plusButton.cornerRadius = 15
+    }
+    
     @IBAction func decrease(_ sender: UIButton) {
-        if (ingredientCount < 1) {return}
+        if (ingredientCount < 1) {}
         ingredient?.decrement()
         ingredientCounter.text = String(ingredient!.count)
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import NightNight
+import SwiftyButton
 
 class PantryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -15,6 +16,8 @@ class PantryViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var ingredientTitleInput: UITextField!
     @IBOutlet weak var saveIngredientsButton: UIButton!
+    
+    
     
     var ingredients: [String:Ingredient] = [:]
     var initialState: [String:Ingredient] = [:]
@@ -80,6 +83,8 @@ class PantryViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
+        cell.plusButton.cornerRadius = 15
+        cell.minusButton.cornerRadius = 15
         if (NightNight.theme == .night) {
             cell.backgroundColor = UIColor.black
             cell.ingredientCounter.textColor = UIColor.white

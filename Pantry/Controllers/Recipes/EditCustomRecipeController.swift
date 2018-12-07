@@ -33,12 +33,14 @@ class EditCustomRecipeController: UIViewController {
         if (NightNight.theme == .night) {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             self.view.backgroundColor = UIColor.black
+            descriptionTextField.backgroundColor = UIColor.black
             //titleLabel.textColor = UIColor.white
             //descriptionLabel.textColor = UIColor.white
         }
         else {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
             self.view.backgroundColor = UIColor.white
+            descriptionTextField.backgroundColor = UIColor.white
             //titleLabel.textColor = UIColor.black
             //descriptionLabel.textColor = UIColor.black
         }
