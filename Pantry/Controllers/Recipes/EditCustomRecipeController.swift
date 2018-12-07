@@ -8,6 +8,7 @@
 
 import UIKit
 import NightNight
+import SwiftyButton
 
 class EditCustomRecipeController: UIViewController {
 
@@ -15,6 +16,7 @@ class EditCustomRecipeController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var saveChangesButton: FlatButton!
     
     var customRecipe: [String:Any] = [:]
     @IBAction func saveChanges(_ sender: UIButton) {
@@ -31,14 +33,14 @@ class EditCustomRecipeController: UIViewController {
         if (NightNight.theme == .night) {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
             self.view.backgroundColor = UIColor.black
-            titleLabel.textColor = UIColor.white
-            descriptionLabel.textColor = UIColor.white
+            //titleLabel.textColor = UIColor.white
+            //descriptionLabel.textColor = UIColor.white
         }
         else {
             navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
             self.view.backgroundColor = UIColor.white
-            titleLabel.textColor = UIColor.black
-            descriptionLabel.textColor = UIColor.black
+            //titleLabel.textColor = UIColor.black
+            //descriptionLabel.textColor = UIColor.black
         }
     }
     
@@ -50,5 +52,7 @@ class EditCustomRecipeController: UIViewController {
         if let description = customRecipe["description"] as? String {
             descriptionTextField.text! = description
         }
+        
+        saveChangesButton.cornerRadius = 15
     }
 }

@@ -18,51 +18,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2o-vx-5jW">
-                                <rect key="frame" x="72" y="170" width="230" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E2o-vx-5jW" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                <rect key="frame" x="72" y="170" width="230" height="46.5"/>
+                                <color key="textColor" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8p-te-Fl8">
-                                <rect key="frame" x="72" y="269" width="109" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBv-JY-Vjz">
-                                <rect key="frame" x="72" y="141" width="40" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xHO-65-Y91">
-                                <rect key="frame" x="67" y="298" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xHO-65-Y91">
+                                <rect key="frame" x="67" y="266" width="240" height="109.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-i3-ctV">
-                                <rect key="frame" x="138" y="473" width="98" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save Changes"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-i3-ctV" customClass="FlatButton" customModule="SwiftyButton">
+                                <rect key="frame" x="69" y="460" width="237" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="IPF-4n-A2U"/>
+                                    <constraint firstAttribute="width" constant="237" id="guf-0r-gQ1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save Changes">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.94117647059999998" green="0.52156862749999999" blue="0.49019607840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="saveChanges:" destination="ne6-u4-6Da" eventType="touchUpInside" id="K8g-2U-Dzs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E2o-vx-5jW" firstAttribute="leading" secondItem="HjP-GM-nA6" secondAttribute="leading" constant="72" id="4A7-Wc-naf"/>
+                            <constraint firstItem="jrq-i3-ctV" firstAttribute="leading" secondItem="HjP-GM-nA6" secondAttribute="leading" constant="69" id="4lg-vB-u0d"/>
+                            <constraint firstItem="E2o-vx-5jW" firstAttribute="top" secondItem="HjP-GM-nA6" secondAttribute="top" constant="150" id="8QZ-6J-snd"/>
+                            <constraint firstItem="xHO-65-Y91" firstAttribute="top" secondItem="E2o-vx-5jW" secondAttribute="bottom" constant="49.5" id="MJr-JP-cJ5"/>
+                            <constraint firstItem="jrq-i3-ctV" firstAttribute="top" secondItem="xHO-65-Y91" secondAttribute="bottom" constant="84.5" id="P35-p7-wwk"/>
+                            <constraint firstItem="HjP-GM-nA6" firstAttribute="bottom" secondItem="jrq-i3-ctV" secondAttribute="bottom" constant="142" id="U5b-DT-iIo"/>
+                            <constraint firstItem="xHO-65-Y91" firstAttribute="leading" secondItem="HjP-GM-nA6" secondAttribute="leading" constant="67" id="XZk-bD-okx"/>
+                            <constraint firstItem="HjP-GM-nA6" firstAttribute="trailing" secondItem="xHO-65-Y91" secondAttribute="trailing" constant="68" id="lNX-uD-GMF"/>
+                            <constraint firstItem="HjP-GM-nA6" firstAttribute="trailing" secondItem="E2o-vx-5jW" secondAttribute="trailing" constant="73" id="sH9-oh-fl6"/>
+                            <constraint firstItem="HjP-GM-nA6" firstAttribute="trailing" secondItem="jrq-i3-ctV" secondAttribute="trailing" constant="69" id="wRm-lc-m9h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HjP-GM-nA6"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionLabel" destination="A8p-te-Fl8" id="FyR-Ft-pd0"/>
                         <outlet property="descriptionTextField" destination="xHO-65-Y91" id="20O-tX-cvA"/>
-                        <outlet property="titleLabel" destination="YBv-JY-Vjz" id="Wd6-Bw-co2"/>
+                        <outlet property="saveChangesButton" destination="jrq-i3-ctV" id="aTo-UN-Cov"/>
                         <outlet property="titleTextField" destination="E2o-vx-5jW" id="B7n-x9-Qut"/>
                     </connections>
                 </viewController>
