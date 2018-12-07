@@ -16,6 +16,7 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var myView: UIView!
     
     var likesAsc:Bool = false
+    var viewsAsc:Bool = false
     
     var searchItem: String = ""
     
@@ -206,18 +207,28 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
             self.updateTable(keywords: self.searchItem)
         }
     }
-    func sortByLikes() {
+    
+    @IBAction func sortByLikes(_ sender: Any) {
         if self.likesAsc {
             self.allRecipies = self.allRecipies.sorted(by: { ($0["likes"] as! Int) < ($1["likes"] as! Int) })
         } else {
             self.allRecipies = self.allRecipies.sorted(by: { ($0["likes"] as! Int) > ($1["likes"] as! Int) })
         }
-    }
-    @IBAction func sortDictionary(_ sender: Any) {
-        self.sortByLikes()
         self.likesAsc = !self.likesAsc
         self.updateTable(keywords: self.searchItem)
     }
+    
+
+    @IBAction func sortByViews(_ sender: Any) {
+        if self.viewsAsc {
+            self.allRecipies = self.allRecipies.sorted(by: { ($0["views"] as! Int) < ($1["views"] as! Int) })
+        } else {
+            self.allRecipies = self.allRecipies.sorted(by: { ($0["views"] as! Int) > ($1["views"] as! Int) })
+        }
+        self.viewsAsc = !self.viewsAsc
+        self.updateTable(keywords: self.searchItem)
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Unselects cell after clicking on it
@@ -229,6 +240,11 @@ class CustomRecipesViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = sender as! CustomRecipeCell
         let vc = segue.destination as! RecipeDetailsController
         var recipe = cell.customRecipe!
+        APIManager.shared.updateViewsCount(customRecipe: recipe, value: (recipe["views"] as! Int) + 1, completion: { (err) in
+            if let err = err {
+                print(err)
+            }
+        })
         recipe["title"] = recipe["recipeName"]
         if let imageURL = recipe["imageURL"] as? String {
             recipe["thumbnail"] = imageURL

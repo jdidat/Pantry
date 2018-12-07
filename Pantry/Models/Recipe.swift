@@ -13,11 +13,13 @@ struct Recipe: Decodable {
     var href: String
     var ingredients: String
     var thumbnail: String
+    var views: Int?
     init(dictionary: [String:Any]) {
         self.title = dictionary["title"] as! String
         self.href = dictionary["href"] as! String
         self.ingredients = dictionary["ingredients"] as! String
         self.thumbnail = dictionary["thumbnail"] as? String ?? ""
+        self.views = dictionary["views"] as? Int ?? 0
     }
 }
 

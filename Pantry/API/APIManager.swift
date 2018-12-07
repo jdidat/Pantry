@@ -356,8 +356,17 @@ class APIManager {
         }
     }
     
-    func updateViewsCount(completion: @escaping(Error?) -> ()){
-        
+    func updateViewsCount(customRecipe: [String:Any], value: Int, completion: @escaping(Error?) -> ()){
+        let ownerId = customRecipe["ownerId"] as! String
+        let recipeName = customRecipe["recipeName"] as! String
+        db.collection("customRecipes").document(ownerId).setData([recipeName: ["views": value]], merge: true)
+        { err in
+                if let err = err {
+                    completion(err)
+                } else {
+                    completion(nil)
+                }
+        }
     }
 
     func validateUser() -> Bool {

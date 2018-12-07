@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gcc-aM-HXA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,7 +91,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfW-Nw-y1E">
-                                                            <rect key="frame" x="101" y="48" width="71.5" height="17.5"/>
+                                                            <rect key="frame" x="101" y="40" width="71.5" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -119,13 +119,21 @@
                                                                 <action selector="dislike:" destination="mhL-qb-uT4" eventType="touchUpInside" id="UWP-NG-HvQ"/>
                                                             </connections>
                                                         </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uX5-2M-lGG">
+                                                            <rect key="frame" x="101" y="68" width="187" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="OhV-8V-eNs" firstAttribute="leading" secondItem="6Dk-Rf-2UZ" secondAttribute="leading" constant="101" id="Dqg-5i-vNH"/>
                                                         <constraint firstItem="4YM-Yl-iO3" firstAttribute="top" secondItem="6Dk-Rf-2UZ" secondAttribute="top" constant="4" id="Ky8-qv-dag"/>
-                                                        <constraint firstItem="UfW-Nw-y1E" firstAttribute="top" secondItem="6Dk-Rf-2UZ" secondAttribute="top" constant="48" id="QYb-UP-d0r"/>
+                                                        <constraint firstItem="UfW-Nw-y1E" firstAttribute="top" secondItem="6Dk-Rf-2UZ" secondAttribute="top" constant="40" id="QYb-UP-d0r"/>
                                                         <constraint firstItem="OhV-8V-eNs" firstAttribute="top" secondItem="6Dk-Rf-2UZ" secondAttribute="top" constant="8" id="UI9-4D-GNP"/>
+                                                        <constraint firstItem="uX5-2M-lGG" firstAttribute="leading" secondItem="4YM-Yl-iO3" secondAttribute="trailing" constant="8" id="Usk-2a-0lw"/>
+                                                        <constraint firstAttribute="bottom" secondItem="uX5-2M-lGG" secondAttribute="bottom" constant="8" id="Yj2-Ub-Jeg"/>
                                                         <constraint firstItem="UfW-Nw-y1E" firstAttribute="leading" secondItem="6Dk-Rf-2UZ" secondAttribute="leading" constant="101" id="hlq-Ps-1E8"/>
                                                         <constraint firstItem="4YM-Yl-iO3" firstAttribute="leading" secondItem="6Dk-Rf-2UZ" secondAttribute="leading" constant="8" id="idn-Xs-Ze2"/>
                                                     </constraints>
@@ -147,6 +155,7 @@
                                             <outlet property="customRecipeTitle" destination="OhV-8V-eNs" id="dPw-eZ-uyO"/>
                                             <outlet property="dislikeButton" destination="UDo-jf-LRo" id="9E8-HO-oXQ"/>
                                             <outlet property="likeButton" destination="HpO-AJ-pvF" id="eCg-ya-7Hc"/>
+                                            <outlet property="viewsLabel" destination="uX5-2M-lGG" id="kuD-Nu-9vD"/>
                                             <segue destination="YjZ-3R-YYm" kind="presentation" identifier="recipeDetailsSegue" id="j7l-Va-NtH"/>
                                         </connections>
                                     </tableViewCell>
@@ -169,7 +178,14 @@
                                 <rect key="frame" x="274" y="76" width="85" height="30"/>
                                 <state key="normal" title="Sort by likes"/>
                                 <connections>
-                                    <action selector="sortDictionary:" destination="l3q-on-Gy0" eventType="touchUpInside" id="KBQ-cd-vTb"/>
+                                    <action selector="sortByLikes:" destination="l3q-on-Gy0" eventType="touchUpInside" id="uPD-Cr-PDa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKd-G7-Gkm">
+                                <rect key="frame" x="141" y="76" width="93" height="30"/>
+                                <state key="normal" title="Sort by views"/>
+                                <connections>
+                                    <action selector="sortByViews:" destination="l3q-on-Gy0" eventType="touchUpInside" id="7fk-6v-tcc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -178,7 +194,9 @@
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="ABn-1K-uKf"/>
                             <constraint firstItem="Vn1-bx-dPu" firstAttribute="top" secondItem="LdB-vg-aaz" secondAttribute="bottom" id="AzI-4B-7wg"/>
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="top" secondItem="w3V-9G-Yz1" secondAttribute="top" id="C1e-mh-yMf"/>
+                            <constraint firstItem="nKd-G7-Gkm" firstAttribute="top" secondItem="LdB-vg-aaz" secondAttribute="bottom" id="Idd-TB-y83"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="leading" secondItem="w3V-9G-Yz1" secondAttribute="leading" id="TKz-NR-t3n"/>
+                            <constraint firstItem="Vn1-bx-dPu" firstAttribute="leading" secondItem="nKd-G7-Gkm" secondAttribute="trailing" constant="40" id="Zem-uJ-w3q"/>
                             <constraint firstItem="w3V-9G-Yz1" firstAttribute="trailing" secondItem="Vn1-bx-dPu" secondAttribute="trailing" constant="16" id="agd-hT-XGl"/>
                             <constraint firstItem="LdB-vg-aaz" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="eWA-Gn-p5e"/>
                             <constraint firstItem="8C0-88-CGV" firstAttribute="trailing" secondItem="w3V-9G-Yz1" secondAttribute="trailing" id="j5G-e9-gNU"/>
@@ -689,6 +707,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Qkv-oE-mnc"/>
-        <segue reference="BbF-hd-kaX"/>
+        <segue reference="j7l-Va-NtH"/>
     </inferredMetricsTieBreakers>
 </document>

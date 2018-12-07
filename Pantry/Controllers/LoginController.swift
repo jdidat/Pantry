@@ -88,7 +88,6 @@ class LoginViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            self.err_neither = error!.localizedDescription
         }
     }
 }

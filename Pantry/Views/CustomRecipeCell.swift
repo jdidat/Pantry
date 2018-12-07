@@ -28,6 +28,7 @@ class CustomRecipeCell: UITableViewCell {
     @IBOutlet weak var customRecipeLikes: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dislikeButton: UIButton!
+    @IBOutlet weak var viewsLabel: UILabel!
     
     var isLoading = false
     
@@ -36,6 +37,7 @@ class CustomRecipeCell: UITableViewCell {
             if let customRecipe = customRecipe {
                 customRecipeTitle.text = customRecipe["recipeName"] as? String
                 customRecipeDescription.text = customRecipe["description"] as? String
+                viewsLabel.text = "Views: \(customRecipe["views"] as! Int)"
                 if let customLikes = customRecipe["likes"] as? Int {
                     customRecipeLikes.text = String(customLikes)
                 }
@@ -52,7 +54,7 @@ class CustomRecipeCell: UITableViewCell {
                 }
                 if self.likeButton != nil {
                     if let object = (UserDefaults.standard.string(forKey: (customRecipe["recipeName"] as! String) + (customRecipe["ownerId"] as! String))) {
-                        if object == "liked"{
+                        if object == "liked" {
                             self.likeButton.setTitleColor(UIColor.green, for: .normal)
                             self.dislikeButton.setTitleColor(UIColor.systemBlue, for: .normal)
                         } else {

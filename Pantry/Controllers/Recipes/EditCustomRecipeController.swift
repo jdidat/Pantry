@@ -21,10 +21,10 @@ class EditCustomRecipeController: UIViewController {
     var customRecipe: [String:Any] = [:]
     @IBAction func saveChanges(_ sender: UIButton) {
         APIManager.shared.editCustomRecipe(customRecipe: customRecipe, newRecipeName: titleTextField.text!, description: descriptionTextField.text!) { (error) in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
-            
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
