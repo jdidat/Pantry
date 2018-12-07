@@ -368,7 +368,18 @@ class APIManager {
                 }
         }
     }
-
+    
+    func getDirections(urlString: String, completion: @escaping(Data?, Error?) -> ()){
+        URLSession.shared.dataTask(with: URL(string: urlString)!) { (data, respose, err) in
+            guard let data = data else {return}
+            do {
+                completion(data, nil)
+            } catch let jsonErr {
+                print(jsonErr.localizedDescription)
+            }
+            }.resume()
+    }
+    
     func validateUser() -> Bool {
         return self.currentUserId.count > 0
     }

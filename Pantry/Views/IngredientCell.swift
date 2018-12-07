@@ -21,14 +21,13 @@ class IngredientCell: UITableViewCell {
     var ingredient: Ingredient? {
         didSet {
             ingredientTitle.text = ingredient?.title
-            ingredientCounter.text = String(ingredient!.count)
+//            ingredientCounter.text = String(ingredient!.count)
         }
     }
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     func viewDidLoad(){

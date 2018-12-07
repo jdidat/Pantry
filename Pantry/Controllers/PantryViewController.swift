@@ -83,16 +83,16 @@ class PantryViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! IngredientCell
-        cell.plusButton.cornerRadius = 15
-        cell.minusButton.cornerRadius = 15
+//        cell.plusButton.cornerRadius = 15
+//        cell.minusButton.cornerRadius = 15
         if (NightNight.theme == .night) {
             cell.backgroundColor = UIColor.black
-            cell.ingredientCounter.textColor = UIColor.white
+//            cell.ingredientCounter.textColor = UIColor.white
             cell.ingredientTitle.textColor = UIColor.white
         }
         else {
             cell.backgroundColor = UIColor.white
-            cell.ingredientCounter.textColor = UIColor.black
+//            cell.ingredientCounter.textColor = UIColor.black
             cell.ingredientTitle.textColor = UIColor.black
         }
         cell.ingredient = Array(ingredients)[indexPath.row].value

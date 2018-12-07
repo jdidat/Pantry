@@ -13,26 +13,25 @@ import SwiftyButton
 import NightNight
 class RecipeDetailsController: UIViewController {
     
-    @IBOutlet weak var recipeIngredients: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var recipeImage: UIImageView!
     var selectedRecipe:Recipe?
     @IBOutlet weak var viewWebpageButton: FlatButton!
     @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var ingredientsDataLabel: UILabel!
-    
-    
+    @IBOutlet weak var recipeTitle: UILabel!
+    var totalIngredientsHeight:Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = false
         if (NightNight.theme == .night) {
             self.view.backgroundColor = UIColor.black
             self.ingredientsLabel.textColor = UIColor.white
-            self.ingredientsDataLabel.textColor = UIColor.white
+            self.recipeTitle.textColor = UIColor.white
         }
         else {
             self.view.backgroundColor = UIColor.white
             self.ingredientsLabel.textColor = UIColor.black
-            self.ingredientsDataLabel.textColor = UIColor.black
+            self.recipeTitle.textColor = UIColor.black
         }
     }
     
@@ -40,19 +39,24 @@ class RecipeDetailsController: UIViewController {
         return string.lowercased().range(of:substring.lowercased()) != nil
     }
     
+    
+    
+    
     func generateIngredientsUI() {
         let object = UserDefaults.standard.object(forKey: "ingredients");
         if let recipe = selectedRecipe {
             let ingredientsArray = recipe.ingredients.components(separatedBy: ", ")
-            var yPos = 325
+            var yPos = self.ingredientsLabel.frame.origin.y + self.ingredientsLabel.frame.height + 24
             var counter = 1
-
+            let height = 30
             
             for string in ingredientsArray {
-                let rect = CGRect(x: 40, y: yPos, width: 200, height: 21)
+                let rect = CGRect(x: 40, y: Int(yPos), width: 300, height: height)
                 let label = UILabel(frame: rect)
                 label.text = "\(counter). \(string)"
                 label.font = label.font.withSize(20)
+                label.numberOfLines = 0
+                label.sizeToFit()
                 counter += 1
                 if let object = object as? [String:[String:Any]] {
                     let keys = object.keys
@@ -72,15 +76,55 @@ class RecipeDetailsController: UIViewController {
                 } else {
                     label.textColor = UIColor.red
                 }
-                self.view.addSubview(label)
-                yPos = yPos+21;
+                self.scrollView.addSubview(label)
+                yPos = yPos+CGFloat(label.frame.height + 8);
             }
-            recipeIngredients.text = ""
+            totalIngredientsHeight = Int(yPos)
+        }
+    }
+    
+    func generateDirections(directions: [String]){
+        var yPos = totalIngredientsHeight + 20
+        var counter = 1
+        let height = 30
+        DispatchQueue.main.async() {
+            let rect = CGRect(x: 16, y: Int(yPos), width: 300, height: height)
+            let label = UILabel(frame: rect)
+            label.font = label.font.withSize(30)
+            label.text = "Directions"
+            if (NightNight.theme == .night) {
+                label.textColor = UIColor.white
+            }
+            else {
+                label.textColor = UIColor.black
+            }
+            self.scrollView.addSubview(label)
+            yPos += Int(label.frame.height) + 8;
+        }
+        for string in directions {
+            DispatchQueue.main.async() {
+                let rect = CGRect(x: 40, y: Int(yPos), width: 300, height: height)
+                let label = UILabel(frame: rect)
+                label.text = "\(counter). \(string)"
+                label.font = label.font.withSize(20)
+                if (NightNight.theme == .night) {
+                    label.textColor = UIColor.white
+                }
+                else {
+                    label.textColor = UIColor.black
+                }
+                label.numberOfLines = 0
+                label.sizeToFit()
+                counter += 1
+                self.scrollView.addSubview(label)
+                yPos = yPos+Int(label.frame.height) + 8;
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
         self.generateIngredientsUI()
         if let url = URL(string: (selectedRecipe?.thumbnail)!) {
             let urlRequest = URLRequest(url: url)
@@ -93,6 +137,19 @@ class RecipeDetailsController: UIViewController {
         }
         if selectedRecipe?.href == nil || (selectedRecipe?.href.isEmpty)! {
             self.viewWebpageButton.isEnabled = false
+        }
+        self.recipeTitle.text = selectedRecipe?.title
+        var url = selectedRecipe?.href.components(separatedBy: "/")
+        let token = url![(url?.count)! - 1];
+        APIManager.shared.getDirections(urlString: "https://pantry-parser.herokuapp.com/recipe/\(token)") { (data, err) in
+            if let data = data {
+                let json = try? JSONSerialization.jsonObject(with: data, options: [])
+                if let dictionary = json as? [String: Any] {
+                    if let directions = dictionary["directions"] as? [String] {
+                        self.generateDirections(directions: directions)
+                    }
+                }
+            }
         }
     }
     

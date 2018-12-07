@@ -37,7 +37,7 @@ class CustomRecipeCell: UITableViewCell {
             if let customRecipe = customRecipe {
                 customRecipeTitle.text = customRecipe["recipeName"] as? String
                 customRecipeDescription.text = customRecipe["description"] as? String
-                viewsLabel.text = "Views: \(customRecipe["views"] as! Int)"
+                viewsLabel.text = "views: \(customRecipe["views"] as! Int)"
                 if let customLikes = customRecipe["likes"] as? Int {
                     customRecipeLikes.text = String(customLikes)
                 }
